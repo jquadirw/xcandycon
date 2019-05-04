@@ -1,0 +1,68 @@
+{% extends 'webapp/base.html' %}
+
+{% block content %}
+
+<div class="well page">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="pull-left" style="margin-left: 16px">Data Quality Tools</h1>
+        </div>
+        <br/>
+
+        <div class="col-lg-12">
+            <blockquote style="margin-left: 16px; font-style: normal">
+                <p>Data Quality Tools is the place for working on the data and prepping up for running analytics and AI/ML models.</p>
+
+                <p>The tools in this section will empower the user to clean the data, filter out unwanted data, reshape the data, etc..</p>
+            </blockquote>
+        </div>
+    </div>
+
+    <div class="col-lg-12">
+        <div class="card" style="width: 100%; margin: 0 auto;border: none;">
+            <div class="card-body" style="margin: 0 auto;">
+                <p class="card-text"><a class="btn btn-primary" href="{% url 'import' %}">Data Enrichment</a>
+                    <a class="btn btn-primary" href="{% url 'import' %}">Apply Filters</a>
+                    <a class="btn btn-primary" href="{% url 'import' %}">Merge Datasets</a>
+                    <a class="btn btn-primary" href="{% url 'import' %}">Slicing &amp; Dicing</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12">
+        <div class="card" style="width: 100%; margin: 0 auto;border: none;">
+            <div class="card-body" style="margin: 0 auto;">
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Data Enrichment tools will build deep and complex views to understand the data and its structure.
+                        <p class="lead">
+                            <a class="btn btn-info btn-sm" href="#" role="button">More..</a>
+                        </p>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Filtering tools allow for working with messy data: cleaning it; transforming it from one format into another; and extending it with web services and external data.
+                        <p class="lead">
+                            <a class="btn btn-info btn-sm" href="#" role="button">More..</a>
+                        </p>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        There may be situations where you would like to merge datasets to run or apply your analysis. Find helpful tools here.
+                        <p class="lead">
+                            <a class="btn btn-info btn-sm" href="#" role="button">More..</a>
+                        </p>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Slicing/Dicing tools will help in subsetting or cross-sectional views of the data.
+                        <p class="lead">
+                            <a class="btn btn-info btn-sm" href="#" role="button">More..</a>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

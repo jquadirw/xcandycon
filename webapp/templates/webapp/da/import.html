@@ -1,0 +1,122 @@
+{% extends 'webapp/base.html' %}
+
+{% block content %}
+
+<div class="well page">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card" style="width: 50%; margin: 0 auto;padding: 5px;">
+                <h5>Import Datasets</h5>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="card" style="width: 50%; margin: 0 auto;">
+                <div class="card-body">
+
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% for field in form %}
+                        <div class="form-group has-errors text-danger small">
+                            {{field.errors}}
+                        </div>
+                        <div class="form-group has-errors text-danger small">
+                        </div>
+                        <div class="fileUpload btn btn-info">
+                            <span>Browse...</span>
+                            {{field}}
+                        </div>
+                        {% endfor %}
+                        <div class="form-group has-errors text-danger">
+                            <button class="btn btn-primary" style="width:40%">Import</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="card" style="width: 50%; margin: 0 auto;">
+                <div class="card-body" style="width: 100%">
+                    <table class="table table-lg table-bordered table-striped" style="font-size: 0.775em;">
+                        <thead>
+                        <tr>
+                            <th>File Name</th>
+                            <th>Size</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody id="filelist">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="card" style="width: 50%; margin: 0 auto;">
+                <div class="card-body" style="width: 50%">
+                        <p class="card-text"><a class="btn btn-primary" href="{% url 'index' %}">Return to Home</a></p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<script src="/static/js/jquery.min.js"></script>
+
+<script type="text/javascript">
+    var items;
+    var fileIdCounter = 0;
+    var filesToUpload = [];
+
+    $('#id_filefield').bind('change', function(evt) {
+        var output = [];
+
+        for (var i = 0; i < evt.target.files.length; i++) {
+            fileIdCounter++;
+            var file = evt.target.files[i];
+            var fileId = fileIdCounter;
+
+            filesToUpload.push({
+                id: fileId,
+                file: file
+            });
+
+            var removeLink = "<a class=\"removeFile\" href=\"#\" data-fileid=\"" + fileId + "\">Remove</a>";
+
+            output.push("<tr><td>", escape(file.name), "</td><td>", formatBytes(file.size, 1), "</td><td>", removeLink, "</td></tr>");
+        };
+
+        var filelisthtml = output.join("");
+        $('#filelist').html(filelisthtml);
+    });
+
+    $(this).on("click", ".removeFile", function (e) {
+        alert('remove file clicked');
+        e.preventDefault();
+
+        var fileId = $(this).parent().children("a").data("fileid");
+
+        for (var i = 0; i < filesToUpload.length; ++i) {
+            if (filesToUpload[i].id === fileId)
+                filesToUpload.splice(i, 1);
+        }
+
+        $(this).parent().remove();
+    });
+
+    function formatBytes(bytes,decimals) {
+        if(bytes == 0) return '0 Bytes';
+        var k = 1024,
+        dm = decimals <= 0 ? 0 : decimals || 2,
+        sizes = ['bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
+        i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+    }
+
+</script>
+
+{% endblock %}

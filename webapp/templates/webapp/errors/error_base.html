@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="/static/img/favicon.ico"/>
+
+    <link rel="stylesheet" href="https://bootswatch.com/4/litera/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <title>Error</title>
+
+</head>
+<body>
+
+{% block content %}
+
+<div class="bg-extended">
+    <div class="align-vertical-center">
+        <div class="container">
+            <div class="row">
+                <div class="well col-sm-offset-3 col-sm-6">
+                    <div class="well-heading alert-danger">
+                        <h1>Error {{code}}</h1>
+                        <a href="{% url 'index' %}" style="position: absolute; right: 50px; bottom:-25px" class="btn btn-primary btn-fab btn-raised mdi-action-home"></a>
+                    </div>
+                    <div class="well-body">
+                        <h4>{{ message }}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+</body>
+</html>
