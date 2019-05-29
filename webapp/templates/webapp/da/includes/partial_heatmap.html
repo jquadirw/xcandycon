@@ -1,0 +1,8 @@
+<form method="post" action="{% url 'heatmap_form' source 'Visualizing Heatmap' %}" class="js-heatmap-form">
+    {% csrf_token %}
+    {% include 'webapp/da/includes/partial_heatmap_form.html' %}
+    <div class="modal-footer">
+        <button type="submit" class="submit-btn btn btn-primary">Get Heatmap</button>
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+    </div>
+</form>
