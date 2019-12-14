@@ -1,4 +1,4 @@
-<form method="post" action="{% url 'heatmap_form' source 'Visualizing Heatmap' %}" class="js-heatmap-form">
+<form method="post" action="{% url 'heatmap_form' source 'Heatmap Results' %}" class="js-heatmap-form">
     {% csrf_token %}
     {% include 'webapp/da/includes/partial_heatmap_form.html' %}
     <div class="modal-footer">

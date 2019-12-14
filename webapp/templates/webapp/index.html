@@ -1,0 +1,68 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="/static/img/favi/favicon.ico"/>
+
+    <link rel="stylesheet" href="https://bootswatch.com/4/litera/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="static/img/favi/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="static/img/favi/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="static/img/favi/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="static/img/favi/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="static/img/favi/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="static/img/favi/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="static/img/favi/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="static/img/favi/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/img/favi/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="static/img/favi/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/img/favi/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="static/img/favi/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/img/favi/favicon-16x16.png">
+    <link rel="manifest" href="static/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <title>xCandy | Eat right, control sugar!</title>
+
+</head>
+<body style="background-color: #1C1C1B">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black mb-3">
+        <div class="container">
+            <a class="navbar-brand" href="/home"><img style="background:none;width: 35px;" class="circle" src="/static/img/xcandylogo.png">&nbsp;&nbsp;&nbsp;xCandy.ai</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul style="padding-left: 45vw;" class="navbar-nav mr-auto">
+            {% if request.user.is_authenticated == False %}
+
+            <li class="nav-item">
+                <a class="nav-link" href="/login/auth0" style="color: #FEFEFD;font-family: Arial;">Log In</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/download" style="color: #FEFEFD;font-family: Arial;">Download</a>
+            </li>
+            {% endif %}
+            {% if request.user.is_authenticated == True %}
+            <li class="nav-item">
+                <a class="nav-link" href="/profile" style="color: #FEFEFD;font-family: Arial;">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout" style="color: #FEFEFD;font-family: Arial;">Log Out</a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+    <div class="container px-2">
+        <img style="width: 900px;height: 700px;" src="static/img/dummy1.png">
+    </div>
+
+    </body>
+</html>

@@ -1,0 +1,70 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="/static/img/favi/favicon.ico"/>
+
+    <link rel="stylesheet" href="https://bootswatch.com/4/litera/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <title>xCandy | Eat right, control sugar!</title>
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+    <div class="container">
+        <a class="navbar-brand" href="/"><img style="background:none;width: 35px;" class="circle" src="/static/img/xcandylogo.png"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/home">Home</a>
+                </li>
+                {% if request.user.is_authenticated == False %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/login/auth0">Log In</a>
+                </li>
+                {% endif %}
+                {% if request.user.is_authenticated == True %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/visualize">Visualize</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/learn">Learn</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/mydiet">MyDiet&trade;</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/help">Help</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile" style="padding-left: 42.2em;">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Log Out</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container px-2">
+    {% block content %}{% endblock %}
+</div>
+<footer class="footer">
+    <div class="container{% if page == "checks" or page == "details" %}-fluid{% endif %}">
+    <ul>
+        <li>
+            xCandy &copy; 2019 All Rights Reserved
+        </li>
+    </ul>
+    </div>
+</footer>
+</body>
+</html>

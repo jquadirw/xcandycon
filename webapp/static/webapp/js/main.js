@@ -1,4 +1,7 @@
 $(function () {
+    var items;
+    var fileIdCounter = 0;
+    var filesToUpload = [];
 
     $(".frame-detail").each(function () {
         $(this).modalForm({
@@ -31,6 +34,77 @@ $(function () {
           modalForm: ".modal-content-dbmf form"
         });
     });
+
+    $('#filecard').change(function() {
+        alert('i am ready');
+        var contains = filesToUpload.length == 0 ? false : true;
+        if (contains) {
+            $('#filecard').show();
+        }
+        else {
+            $('#filecard').hide();
+        }
+    });
+
+    $('#id_filefield').bind('change', function(evt) {
+        var output = [];
+
+        for (var i = 0; i < evt.target.files.length; i++) {
+            fileIdCounter++;
+            var file = evt.target.files[i];
+            var fileId = fileIdCounter;
+
+            filesToUpload.push({
+                id: fileId,
+                file: file
+            });
+
+            var removeLink = "<a class=\"removeFile\" href=\"#\" data-fileid=\"" + fileId + "\">Remove</a>";
+
+            output.push("<tr><td>", escape(file.name), "</td><td>", formatBytes(file.size, 1), "</td><td>", removeLink, "</td></tr>");
+        };
+
+        var filelisthtml = output.join("");
+        $('#filelist').html(filelisthtml);
+    });
+
+    $(document).on('click', "a.removeFile", function(e) {
+        e.preventDefault();
+
+        alert('filesToUpload (b) = ' + filesToUpload);
+        var fileId = $(this).parent().children("a").data("fileid");
+
+        for (var i = 0; i < filesToUpload.length; ++i) {
+            if (filesToUpload[i].id === fileId)
+                filesToUpload.splice(i, 1);
+        }
+
+        $(this).parent().parent().remove();
+        alert('filesToUpload (a) = ' + filesToUpload);
+    });
+
+    $(this).on("click", ".removeFile", function (e) {
+        alert('remove file clicked');
+        e.preventDefault();
+
+        var fileId = $(this).parent().children("a").data("fileid");
+
+        for (var i = 0; i < filesToUpload.length; ++i) {
+            if (filesToUpload[i].id === fileId)
+                filesToUpload.splice(i, 1);
+        }
+
+        $(this).parent().remove();
+    });
+
+    function formatBytes(bytes,decimals) {
+        if(bytes == 0) return '0 Bytes';
+        var k = 1024,
+        dm = decimals <= 0 ? 0 : decimals || 2,
+        sizes = ['bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
+        i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+    }
 
     var loadForm = function () {
         var btn = $(this);
