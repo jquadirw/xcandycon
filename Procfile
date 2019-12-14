@@ -1,1 +1,1 @@
-web: gunicorn login.wsgi --log-file -
+web: gunicorn xcandyapp.wsgi --log-file -
