@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -183,3 +184,5 @@ CACHE_TTL = 60 * 15
 # Configure Django App for Heroku.
 import django_heroku
 django_heroku.settings(locals())
+
+ALLOWED_HOSTS = ['xcandyapp.herokuapp.com', 'localhost']
