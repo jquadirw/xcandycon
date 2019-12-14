@@ -4,7 +4,6 @@ certifi==2019.3.9
 cffi==1.11.5
 chardet==3.0.4
 conda==4.3.16
-conda-package-handling==1.6.0
 croniter==0.3.29
 cryptography==2.4.2
 cycler==0.10.0
