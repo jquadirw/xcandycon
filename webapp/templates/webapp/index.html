@@ -5,10 +5,9 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="/static/img/favi/favicon.ico"/>
+    <link rel="icon" type="image/png" href="{% static 'img/favi/favicon.ico' %}"/>
 
-    <link rel="stylesheet" href="https://bootswatch.com/4/litera/bootstrap.min.css">
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
 
     <link rel="apple-touch-icon" sizes="57x57" href="static/img/favi/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="static/img/favi/apple-icon-60x60.png">
@@ -23,7 +22,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="static/img/favi/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="static/img/favi/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="static/img/favi/favicon-16x16.png">
-    <link rel="manifest" href="static/manifest.json">
+    <link rel="manifest" href="{% static 'manifest.json' %}">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
@@ -31,38 +30,61 @@
     <title>xCandy | Eat right, control sugar!</title>
 
 </head>
-<body style="background-color: #1C1C1B">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-black mb-3">
-        <div class="container">
-            <a class="navbar-brand" href="/home"><img style="background:none;width: 35px;" class="circle" src="/static/img/xcandylogo.png">&nbsp;&nbsp;&nbsp;xCandy.ai</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul style="padding-left: 45vw;" class="navbar-nav mr-auto">
-            {% if request.user.is_authenticated == False %}
+<body>
 
-            <li class="nav-item">
-                <a class="nav-link" href="/login/auth0" style="color: #FEFEFD;font-family: Arial;">Log In</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/download" style="color: #FEFEFD;font-family: Arial;">Download</a>
-            </li>
-            {% endif %}
-            {% if request.user.is_authenticated == True %}
-            <li class="nav-item">
-                <a class="nav-link" href="/profile" style="color: #FEFEFD;font-family: Arial;">Profile</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/logout" style="color: #FEFEFD;font-family: Arial;">Log Out</a>
-            </li>
-            {% endif %}
-        </ul>
-    </nav>
-    <div class="container px-2">
-        <img style="width: 900px;height: 700px;" src="static/img/dummy1.png">
+  <!-- Main Container -->
+  <div class="container-main">
+
+    <!-- Banner -->
+    <div class="container-banner">
+      <div class="wrapper-banner">
+        <div class="logo-container">
+          <div class="logo"><img src="{% static 'img/xcandylogo_b.png' %}" alt="">
+            <p><a class="mhome" href="/home">xCandy.ai</a></p>
+          </div>
+          <div class="container-login-top-mobile">
+            <a href="#">Sign in</a>
+            <a href="#">Download</a>
+          </div>
+        </div>
+
+
+
+        <h1>Be in control of your diabetes by eating right</h1>
+        <p>xCandy is an Artificial Intelligent Engine that learns sugar level pattern though a fun and interactive
+          platform from the user. It teaches the user to eat the right food to prevent high or low blood suger events.
+          Studies show that eating right and healthy can potentially reverse diabetes.</p>
+        <div class="img-container-banner"></div>
+      </div>
     </div>
+    <!-- Banner -->
 
-    </body>
+    <!-- Login -->
+    <div class="container-login">
+      <div class="wrapper-login">
+
+        <div class="container-login-top">
+          <a href="#">Sign in</a>
+          <a href="#">Download</a>
+        </div>
+        <form action="">
+          <h4>Sign up</h4>
+          <p>or <a href="#"> sign in to your account</a></p>
+          <input type="text" name="" id="input" placeholder="First Name">
+          <input type="text" name="" id="input" placeholder="Last Name">
+          <input type="email" name="" id="input" placeholder="Email">
+          <input type="password" name="" id="input" placeholder="Password">
+          <p>This page is subject to <a href="#">Google Privacy Policy</a> and <a href="#">Terms of Service</a></p>
+
+          <p><input type="checkbox" name="" id="tnc" checked>I agree to <a href="#">xCandy Terms</a></p>
+          <button type="button" value="" onclick="alert('Enter details first')">Sign up</button>
+        </form>
+      </div>
+    </div>
+    <!-- Login -->
+
+  </div>
+  <!-- Main Container -->
+
+</body>
 </html>

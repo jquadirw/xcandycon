@@ -1,28 +1,60 @@
 {% extends 'webapp/base.html' %}
+{% load static %}
 
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/learn/learn.css' %}">
 
-<div class="well page">
+<!-- JS -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<!-- JS -->
 
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="pull-left" style="margin-left: 16px">Learn &amp; Teach</h1>
-        </div>
-        <br/>
+<div class="canvas-container">
+  <div class="cc-arrows">
+    <div class="canvas-arrow arrow-left"><a href="#">
+      <img src="{% static 'img/com/arrow-1.svg' %}" alt=""></a>
+    </div>
+    <div class="canvas">
+      <canvas id="lineChart_ln"></canvas>
+      <canvas id="popChart_ln"></canvas>
+    </div>
+    <div class="canvas-arrow arrow-right"><a href="#">
+      <img src="{% static 'img/com/arrow-1.svg' %}" alt=""></a>
+    </div>
+  </div>
+
+  <div class="details-container">
+    <div class="value-bar">
+      <!-- Change value using JS for text value -->
+      <div class="value">50</div>
+      <!-- Change value using JS for progress color -->
+      <div class="value-height"></div>
     </div>
 
-    <div class="grid">
-        <div class="learnblocks">
-            <img style="width: 82vh;height: 35vh;" src="/static/img/learn/glucose.png">
-        </div>
-        <div class="learnblocks">
-            <img style="width: 82vh;height: 30vh;" src="/static/img/learn/activity.png">
-        </div>
-        <div class="learnblocks">
-            <img style="width: 40vh;height: 68vh;" src="/static/img/learn/candies.png">
-        </div>
-    </div>
+    <div class="canvas-details">
+      <div class="titles">
+        <h4>You have earned today:</h4>
+        <p><img src="{% static 'img/com/logo_main.png' %}" alt=""> 14 candies</p>
+        <h4 style="color: rgba(255, 0, 92, .9);">Your total candies: <span>56</span> </h4>
+      </div>
 
+      <div class="description">
+        <h5>Today</h5>
+        <p>Welcome back, <span class="username">Joe.</span></p>
+        <p>You need that rest.</p>
+        <p>Right choice of food!</p>
+        <p>Wow! Nice going on the workout.</p>
+        <p>Great job!</p>
+        <p>You just earned <span class="no-of-candies">4</span> candies.</p>
+        <p>Keep Going!</p>
+        <p>Wow! Nice going on the workout.</p>
+        <p>xCandy is learning to help you.</p>
+      </div>
+    </div>
+  </div>
 </div>
-
+<script src="{% static 'js/learn/learn.js' %}" type="text/javascript"></script>
+  
 {% endblock %}
+  
+
+

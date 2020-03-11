@@ -1,0 +1,401 @@
+{% extends 'webapp/base.html' %}
+{% load static %}
+
+{% block content %}
+  <link rel="stylesheet" href="{% static 'css/recipe/recipe.css' %}">
+
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <!-- JS -->
+
+  <!-- Food-Container-1 -->
+  <div class="container-food-item">
+    <!-- Food Item 1 -->
+    <div class="fi-1 f1.1"><img src="{% static 'img/com/dish_1@2x.png' %}" alt=""></div>
+    <!-- Food Item 1 end -->
+    <div class="f1.2">
+      <!-- Food Item 2 -->
+      <div class="fi-2">
+        <div class="fi-2-left">
+          <h1>Healthy mix veg. curry with rice</h1>
+          <p>By Good Food</p>
+        </div>
+        <div class="fi-2-right">
+          <span class="top">Low</span>
+          <span class="middle">GI</span>
+          <span class="bottom">10-40</span>
+        </div>
+      </div>
+      <!-- Food Item 2 end -->
+      <!-- Food Item 3 -->
+      <div class="fi-3">
+        <div class="fi-3-1">
+          <div class="nutrition">
+            <div class="nutrition-1 nt">
+              <p class="n1-title title">kcal</p>
+              <p class="n1-value value">564</p>
+            </div>
+            <div class="nutrition-2 nt">
+              <p class="n2-title title">fat</p>
+              <p class="n2-value value">8<span class="unit">g</span> </p>
+            </div>
+            <div class="nutrition-3 nt">
+              <p class="n3-title title">carbs</p>
+              <p class="n3-value value">71<span class="unit">g</span></p>
+            </div>
+            <div class="nutrition-4 nt">
+              <p class="n4-title title">sugar</p>
+              <p class="n4-value value">16<span class="unit">g</span></p>
+            </div>
+            <div class="nutrition-5 nt">
+              <p class="n5-title title">fiber</p>
+              <p class="n5-value value">9<span class="unit">g</span></p>
+            </div>
+            <div class="nutrition-6 nt">
+              <p class="n6-title title">protein</p>
+              <p class="n6-value value">14<span class="unit">g</span></p>
+            </div>
+            <div class="nutrition-7 nt">
+              <p class="n7-title title">salt</p>
+              <p class="n7-value value">0.94<span class="unit">g</span></p>
+            </div>
+          </div>
+          <div class="meal-info">
+            <div class="mi-1 mi">
+              <img src="{% static 'img/com/time@2x.png' %}" alt="">
+              <p class="value">50 <span class="duration">mins</span></p>
+            </div>
+            <div class="mi-2 mi">
+              <img src="{% static 'img/com/serving@2x.png' %}" alt="">
+              <p> Serves <span class="value">4</span></p>
+            </div>
+            <div class="mi-3 mi">
+              <img src="{% static 'img/com/difficulty@2x.png' %}" alt="">
+              <p class="difficulty">Easy</p>
+            </div>
+          </div>
+        </div>
+        <!-- SECTION 1 -->
+        <div class="fi-3-2">
+          <div class="fi-3-2-1 opt-1"><a class="tab__links" id="tabLink__ing-1">Ingredients</a></div>
+          <div class="fi-3-2-2 opt-2"><a class="tab__links open" id="tabLink__mtd-1">Method</a>
+          </div>
+        </div>
+
+        <!-- 
+          Change the following ID after adding more dishes: 
+          For links: 
+            • tabLink__ing-n
+            • tabLink__mtd-n
+          For Tabs: 
+            • tab__ing-n 
+            • tab__mtd-n
+          Change the following classes: 
+            • tab__shells-n
+         -->
+
+
+
+        <!-- Overlay 1 -->
+        <div class="popup-overlay">
+          <!--Creates the popup content-->
+          <div class="popup-content">
+            <div class="pc-content">
+              <div class="pc-content-i">
+                <h2>Ingredients</h2>
+                <ul>
+                  <li>200g basmati rice</li>
+                  <li>1 tbsp olive oil</li>
+                  <li>1 butternut squash, diced</li>
+                  <li>1 red onion, diced</li>
+                  <li>2 tbsp mild curry paste</li>
+                  <li>300ml vegetable stock</li>
+                  <li>4 large tomatoes, roughly chopped</li>
+                  <li>400g can chickpeas, rinsed and drained</li>
+                  <li>3 tbsp fat-free Greek yogurt</li>
+                  <li>small handful coriander, chopped</li>
+                </ul>
+              </div>
+              <div class="pc-content-m">
+                <h2>Method</h2>
+                <ol>
+                  <li>Cook the rice in boiling salted water, as per pack instructions. Meanwhile, heat the oil in a
+                    large
+                    frying pan and cook the butternut squash for 2-3 mins until lightly browned. Add the onion and the
+                    curry
+                    paste and fry for 3-4 mins more.
+                  </li>
+                  <li>Pour over the stock, then cover and simmer for 15-20 mins, or until the squash is tender. Add the
+                    tomatoes and chickpeas, then gently cook for 3-4 mins, until the tomatoes slightly soften.
+                  </li>
+                  <li>Take off the heat and stir through the yogurt and coriander. Serve with the rice and some whole
+                    meal
+                    chapattis if you like.
+                  </li>
+                  <li>Enjoy with family.</li>
+
+                </ol>
+              </div>
+            </div>
+
+            <!--popup's close button-->
+            <button class="close"><img src="{% static 'img/com/close.svg' %}" alt=""></button>
+            <!--popup's close button end-->
+          </div>
+        </div>
+        <!-- Overlay 1 end -->
+
+
+
+        <!-- TAB 1-1 -->
+        <div class="fi-3-3 tab__shells-1" id="tab__ing-1">
+          <ul>
+            <li>200g basmati rice</li>
+            <li>1 tbsp olive oil</li>
+            <li>1 butternut squash, diced</li>
+            <li>1 red onion, diced</li>
+            <li>2 tbsp mild curry paste</li>
+            <li>300ml vegetable stock</li>
+            <li>4 large tomatoes, roughly chopped</li>
+            <li>400g can chickpeas, rinsed and drained</li>
+            <li>3 tbsp fat-free Greek yogurt</li>
+            <li>small handful coriander, chopped</li>
+          </ul>
+        </div>
+
+
+      </div>
+      <!-- Food Item 3 end -->
+    </div>
+  </div>
+  <!-- Food-container-1 end -->
+  <hr class="line">
+  <!-- Food-Container-2 -->
+  <div class="container-food-item">
+    <!-- Food Item 1 -->
+    <div class="fi-1 f1.1"><img src="{% static 'img/com/dish_1@2x.png' %}" alt=""></div>
+    <!-- Food Item 1 end -->
+    <div class="f1.2">
+      <!-- Food Item 2 -->
+      <div class="fi-2">
+        <div class="fi-2-left">
+          <h1>Healthy mix veg. curry with rice</h1>
+          <p>By Good Food</p>
+        </div>
+        <div class="fi-2-right">
+          <span class="top">Low</span>
+          <span class="middle">GI</span>
+          <span class="bottom">10-40</span>
+        </div>
+      </div>
+      <!-- Food Item 2 end -->
+      <!-- Food Item 3 -->
+      <div class="fi-3">
+        <div class="fi-3-1">
+          <div class="nutrition">
+            <div class="nutrition-1 nt">
+              <p class="n1-title title">kcal</p>
+              <p class="n1-value value">564</p>
+            </div>
+            <div class="nutrition-2 nt">
+              <p class="n2-title title">fat</p>
+              <p class="n2-value value">8<span class="unit">g</span> </p>
+            </div>
+            <div class="nutrition-3 nt">
+              <p class="n3-title title">carbs</p>
+              <p class="n3-value value">71<span class="unit">g</span></p>
+            </div>
+            <div class="nutrition-4 nt">
+              <p class="n4-title title">sugar</p>
+              <p class="n4-value value">16<span class="unit">g</span></p>
+            </div>
+            <div class="nutrition-5 nt">
+              <p class="n5-title title">fiber</p>
+              <p class="n5-value value">9<span class="unit">g</span></p>
+            </div>
+            <div class="nutrition-6 nt">
+              <p class="n6-title title">protein</p>
+              <p class="n6-value value">14<span class="unit">g</span></p>
+            </div>
+            <div class="nutrition-7 nt">
+              <p class="n7-title title">salt</p>
+              <p class="n7-value value">0.94<span class="unit">g</span></p>
+            </div>
+          </div>
+          <div class="meal-info">
+            <div class="mi-1 mi">
+              <img src="{% static 'img/com/serving@2x.png' %}" alt="">
+              <p class="value">50 <span class="duration">mins</span></p>
+            </div>
+            <div class="mi-2 mi">
+              <img src="{% static 'img/com/serving@2x.png' %}" alt="">
+              <p> Serves <span class="value">4</span></p>
+            </div>
+            <div class="mi-3 mi">
+              <img src="{% static 'img/com/difficulty@2x.png' %}" alt="">
+              <p class="difficulty">Easy</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 2 -->
+        <div class="fi-3-2">
+          <div class="fi-3-2-1 opt-1"><a class="tab__links" id="tabLink__ing-2">Ingredients</a></div>
+          <div class="fi-3-2-2 opt-2"><a class="tab__links open" id="tabLink__mtd-2">Method</a></div>
+        </div>
+
+        <!-- TAB 1-2 -->
+        <div class="fi-3-3 tab__shells-2" id="tab__ing-2">
+          <ul>
+            <li>200g basmati rice</li>
+            <li>1 tbsp olive oil</li>
+            <li>1 butternut squash, diced</li>
+            <li>1 red onion, diced</li>
+            <li>2 tbsp mild curry paste</li>
+            <li>300ml vegetable stock</li>
+            <li>4 large tomatoes, roughly chopped</li>
+            <li>400g can chickpeas, rinsed and drained</li>
+            <li>3 tbsp fat-free Greek yogurt</li>
+            <li>small handful coriander, chopped</li>
+          </ul>
+        </div>
+
+        <!-- TAB 2-2 -->
+        <div class="fi-3-3 tab__mtd tab__shells-2" id="tab__mtd-2">
+          <ol>
+            <li>Cook the rice in boiling salted water, as per pack instructions. Meanwhile, heat the oil in a large
+              frying pan and cook the butternut squash for 2-3 mins until lightly browned. Add the onion and the curry
+              paste and fry for 3-4 mins more.
+            </li>
+            <li>Pour over the stock, then cover and simmer for 15-20 mins, or until the squash is tender. Add the
+              tomatoes and chickpeas, then gently cook for 3-4 mins, until the tomatoes slightly soften.
+            </li>
+            <li>Take off the heat and stir through the yogurt and coriander. Serve with the rice and some whole meal
+              chapattis if you like.
+            </li>
+            <li>Enjoy with family.</li>
+
+          </ol>
+        </div>
+      </div>
+      <!-- Food Item 3 end -->
+    </div>
+  </div>
+  <!-- Food-container-2 end -->
+  <hr class="line">
+  <!-- Food-Container-3 -->
+  <div class="container-food-item">
+    <!-- Food Item 1 -->
+    <div class="fi-1 f1.1"><img src="{% static 'img/com/dish_1@2x.png' %}" alt=""></div>
+    <!-- Food Item 1 end -->
+    <div class="f1.2">
+      <!-- Food Item 2 -->
+      <div class="fi-2">
+        <div class="fi-2-left">
+          <h1>Healthy mix veg. curry with rice</h1>
+          <p>By Good Food</p>
+        </div>
+        <div class="fi-2-right">
+          <span class="top">Low</span>
+          <span class="middle">GI</span>
+          <span class="bottom">10-40</span>
+        </div>
+      </div>
+      <!-- Food Item 2 end -->
+      <!-- Food Item 3 -->
+      <div class="fi-3">
+        <div class="fi-3-1">
+          <div class="nutrition">
+            <div class="nutrition-1 nt">
+              <p class="n1-title title">kcal</p>
+              <p class="n1-value value">564</p>
+            </div>
+            <div class="nutrition-2 nt">
+              <p class="n2-title title">fat</p>
+              <p class="n2-value value">8<span class="unit">g</span> </p>
+            </div>
+            <div class="nutrition-3 nt">
+              <p class="n3-title title">carbs</p>
+              <p class="n3-value value">71<span class="unit">g</span></p>
+            </div>
+            <div class="nutrition-4 nt">
+              <p class="n4-title title">sugar</p>
+              <p class="n4-value value">16<span class="unit">g</span></p>
+            </div>
+            <div class="nutrition-5 nt">
+              <p class="n5-title title">fiber</p>
+              <p class="n5-value value">9<span class="unit">g</span></p>
+            </div>
+            <div class="nutrition-6 nt">
+              <p class="n6-title title">protein</p>
+              <p class="n6-value value">14<span class="unit">g</span></p>
+            </div>
+            <div class="nutrition-7 nt">
+              <p class="n7-title title">salt</p>
+              <p class="n7-value value">0.94<span class="unit">g</span></p>
+            </div>
+          </div>
+          <div class="meal-info">
+            <div class="mi-1 mi">
+              <img src="{% static 'img/com/time@2x.png' %}" alt="">
+              <p class="value">50 <span class="duration">mins</span></p>
+            </div>
+            <div class="mi-2 mi">
+              <img src="{% static 'img/com/serving@2x.png' %}" alt="">
+              <p> Serves <span class="value">4</span></p>
+            </div>
+            <div class="mi-3 mi">
+              <img src="{% static 'img/com/difficulty@2x.png' %}" alt="">
+              <p class="difficulty">Easy</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 3 -->
+        <div class="fi-3-2">
+          <div class="fi-3-2-1 opt-1"><a class="tab__links" id="tabLink__ing-3">Ingredients</a></div>
+          <div class="fi-3-2-2 opt-2"><a class="tab__links open" id="tabLink__mtd-3">Method</a></div>
+        </div>
+
+        <!-- TAB 1-2 -->
+        <div class="fi-3-3 tab__shells-3" id="tab__ing-3">
+          <ul>
+            <li>200g basmati rice</li>
+            <li>1 tbsp olive oil</li>
+            <li>1 butternut squash, diced</li>
+            <li>1 red onion, diced</li>
+            <li>2 tbsp mild curry paste</li>
+            <li>300ml vegetable stock</li>
+            <li>4 large tomatoes, roughly chopped</li>
+            <li>400g can chickpeas, rinsed and drained</li>
+            <li>3 tbsp fat-free Greek yogurt</li>
+            <li>small handful coriander, chopped</li>
+          </ul>
+        </div>
+
+        <!-- TAB 2-2 -->
+        <div class="fi-3-3 tab__mtd tab__shells-3" id="tab__mtd-3">
+          <ol>
+            <li>Cook the rice in boiling salted water, as per pack instructions. Meanwhile, heat the oil in a large
+              frying pan and cook the butternut squash for 2-3 mins until lightly browned. Add the onion and the curry
+              paste and fry for 3-4 mins more.
+            </li>
+            <li>Pour over the stock, then cover and simmer for 15-20 mins, or until the squash is tender. Add the
+              tomatoes and chickpeas, then gently cook for 3-4 mins, until the tomatoes slightly soften.
+            </li>
+            <li>Take off the heat and stir through the yogurt and coriander. Serve with the rice and some whole meal
+              chapattis if you like.
+            </li>
+            <li>Enjoy with family.</li>
+
+          </ol>
+        </div>
+      </div>
+      <!-- Food Item 3 end -->
+    </div>
+  </div>
+  <!-- Food-container-2 end -->
+
+  <script src="{% static 'js/recipe/recipe.js' %}" type="text/javascript"></script>
+
+{% endblock %}

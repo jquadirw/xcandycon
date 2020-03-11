@@ -141,11 +141,14 @@ def learn(request):
     return render(request, 'webapp/dl/learn.html')
 
 @login_required
-def mydiet(request):
-    return render(request, 'webapp/re/mydiet.html')
+def recipe(request):
+    return render(request, 'webapp/re/recipe.html')
 
 def help(request):
     return render(request, 'webapp/co/help.html')
+
+def settings(request):
+    return render(request, 'webapp/co/settings.html')
 
 @login_required
 def analytics(request):

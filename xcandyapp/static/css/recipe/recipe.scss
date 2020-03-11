@@ -1,0 +1,520 @@
+// Variables
+$blue: #2d85c3;
+$green: #25cb80;
+$grey-text: #a1a1a1;
+$yellow: #ffca2e;
+
+$tablet: 800px;
+@mixin tablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+$mobile: 600px;
+@mixin mobile {
+  @media (max-width: #{$mobile}) {
+    @content;
+  }
+}
+
+$desktop-sm: 1220px;
+@mixin desktop-sm {
+  @media (max-width: #{$desktop-sm}) {
+    @content;
+  }
+}
+$desktop-xs: 1000px;
+@mixin desktop-xs {
+  @media (max-width: #{$desktop-xs}) {
+    @content;
+  }
+}
+
+.recipe {
+  color: #333333;
+  border-bottom: 2px solid #333;
+  margin-bottom: -2px;
+  @include tablet {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 0px;
+  }
+}
+
+.container-food-item {
+  // border: 2px solid red;
+  max-width: 1216px;
+  margin: 50px auto;
+  padding: 0 40px;
+  display: flex;
+  justify-content: center;
+  @include tablet() {
+    // border: 1px solid crimson;
+    flex-direction: column;
+    align-items: center;
+  }
+  @include mobile() {
+    margin-top: 0px;
+  }
+  .fi-1 {
+    img {
+      width: 420px;
+      // border: 2px solid grey;
+      @include tablet() {
+        margin-bottom: 35px;
+        width: 100% !important;
+      }
+      @include desktop-sm() {
+        width: 350px;
+      }
+      @include desktop-xs() {
+        width: 250px;
+      }
+
+      @include mobile() {
+        width: calc(100vw - 32px) !important;
+      }
+    }
+  }
+
+  .fi-2 {
+    border-bottom: 2px solid #eeeeee;
+    margin-bottom: -20px;
+    margin-left: 20px;
+    // border: 2px solid black;
+    @include desktop-xs() {
+      margin-bottom: -25px;
+      margin-top: -5px;
+    }
+    width: 100%;
+    @include desktop-sm() {
+      width: 98%;
+    }
+    @include desktop-xs() {
+      width: 90%;
+    }
+    @include tablet() {
+      margin-bottom: -15px;
+    }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .fi-2-left {
+      margin-top: -24px;
+      // border: 3px solid blueviolet;
+      h1 {
+        margin: 0;
+        font-size: 28px;
+        font-weight: 500;
+        @include desktop-xs() {
+          font-size: 24px;
+        }
+      }
+      p {
+        margin: 5px 0;
+        font-size: 21px;
+        font-weight: 400;
+        @include desktop-xs() {
+          font-size: 18px;
+        }
+      }
+    }
+    .fi-2-right {
+      background: $yellow;
+      font-weight: 500;
+      letter-spacing: 1px;
+      border-radius: 8px;
+      width: 50px;
+      height: 100%;
+      @include desktop-xs() {
+        height: 100%;
+      }
+      @include mobile() {
+        width: 65px;
+      }
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 5px;
+      margin-bottom: 5px;
+      .top {
+        font-size: 12px;
+      }
+      .middle {
+        font-size: 32px;
+      }
+      .bottom {
+        font-size: 12px;
+      }
+      @include desktop-xs() {
+        .top {
+          font-size: 11px;
+        }
+        .middle {
+          font-size: 27px;
+        }
+        .bottom {
+          font-size: 11px;
+        }
+      }
+    }
+  }
+  .fi-3 {
+    // border: 2px solid forestgreen;
+    width: 100%;
+    @include tablet() {
+      width: 95%;
+    }
+    padding-left: 20px;
+
+    .fi-3-1 {
+      // border: 2px solid blue;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      @include tablet() {
+        flex-direction: column;
+        width: 100%;
+      }
+      @include mobile() {
+        width: calc(100vw - 20px);
+        // margin-left: -20px;
+      }
+      .nutrition {
+        // border: 4px solid grey;
+        padding-bottom: 5px;
+        display: flex;
+        @include mobile() {
+          overflow-x: scroll;
+          width: 100%;
+        }
+        @include tablet() {
+          margin-bottom: 10px;
+        }
+        .nt {
+          border: 2px solid $blue;
+          text-align: center;
+          height: fit-content;
+          min-width: fit-content;
+          border-radius: 8px;
+          margin: 5px 10px;
+          width: 50px;
+          @include desktop-sm() {
+            margin: 5px 5px;
+          }
+          @include desktop-xs() {
+            margin: 3px 2px;
+          }
+
+          .title {
+            background: $blue;
+            color: #fff;
+            font-size: 14px;
+            line-height: 20px;
+            padding: 5px 5px;
+            margin: 0;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            // border: 1px solid red;
+          }
+          .value {
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            padding: 5px 5px;
+            margin: 0;
+          }
+        }
+      }
+      .meal-info {
+        display: flex;
+        @include desktop-sm() {
+          padding-left: 8px !important;
+          // border: 4px solid grey;
+        }
+        .mi {
+          // border: 4px solid grey;
+          width: 70px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          @include desktop-sm() {
+            width: 60px;
+          }
+          @include desktop-xs() {
+            width: 50px;
+          }
+          img {
+            width: 30px;
+          }
+          p {
+            font-size: 12px;
+            @include desktop-xs() {
+              font-size: 10px;
+              letter-spacing: 0.3px;
+            }
+            font-weight: 500;
+            // border: 2px solid red;
+            margin: 5px auto;
+          }
+        }
+      }
+    }
+    .fi-3-2 {
+      display: flex;
+      border-bottom: 1px solid #eee;
+      div {
+        margin-right: 30px;
+        margin-bottom: 10px;
+        :hover {
+          color: black !important;
+        }
+        a {
+          font-size: 15px;
+          text-decoration: none;
+          line-height: 10px;
+          color: #808080;
+          cursor: pointer;
+        }
+      }
+    }
+    .fi-3-3 {
+      height: 200px;
+      // border: 1px solid green;
+      display: flex;
+      padding-left: 16px;
+      @include mobile() {
+        margin-top: 10px;
+        margin-bottom: 40px;
+        // padding-left: 16px;
+      }
+      ol {
+        // border: 1px solid red;
+        width: 100%;
+        height: fit-content;
+        padding-left: 0;
+
+        li {
+          width: 95%;
+          // border: 1px solid grey;
+          font-size: 15px;
+          line-height: 18px;
+          font-weight: 500;
+          margin: 10px 50px 16px 6px;
+          @include desktop-sm() {
+            font-size: 14px;
+            margin-top: 5px;
+          }
+          @include tablet() {
+            font-size: 14px;
+            line-height: 125%;
+            margin-top: 2px;
+          }
+          @include mobile() {
+            font-size: 13px;
+            margin-top: 0px;
+          }
+        }
+      }
+      ul {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-direction: column;
+        flex-wrap: wrap;
+        // border: 1px solid red;
+        margin-top: 10px;
+        // margin-bottom: 30px;
+
+        @include mobile() {
+          flex-wrap: nowrap;
+          height: fit-content;
+        }
+        // border: 1px solid red;
+        // margin-left: 0;
+        width: 100%;
+
+        li {
+          // border: 1px solid grey;
+          line-height: 18px;
+          margin: 10px;
+          width: 220px;
+          font-size: 15px;
+          @include desktop-sm() {
+            font-size: 14px;
+            line-height: 16px;
+            margin-top: 5px;
+          }
+          @include tablet() {
+            font-size: 13px;
+            width: 200px;
+            margin-top: 2px;
+          }
+          @include mobile() {
+            font-size: 13px;
+            width: 90%;
+            line-height: 13px;
+            margin-top: 2px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.line {
+  width: 1216px;
+  border: 1px solid #eee;
+  @include tablet() {
+    width: 90%;
+  }
+  @include mobile() {
+    width: 90%;
+    margin-bottom: 70px;
+    transform: translateY(40px);
+  }
+}
+
+// For JS ------------------------------
+.container-food-item .fi-3 .tab__mtd {
+  display: none;
+}
+// ---------------------------------------
+
+// Overlay content
+.popup-overlay {
+  /*Hides pop-up when there is no "active" class*/
+  visibility: hidden;
+  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  overflow: scroll;
+}
+
+.popup-overlay.active {
+  /*displays pop-up when "active" class is present*/
+  visibility: visible;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.popup-content {
+  /*Hides pop-up content when there is no "active" class */
+  visibility: hidden;
+  .pc-content {
+    background: #f2f2f2;
+    width: 1000px;
+    height: 600px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 100px auto;
+    @include desktop-xs() {
+      width: 700px;
+      margin: 100px auto;
+      padding: 20px;
+    }
+    @include tablet() {
+      width: 600px;
+      margin: 50px auto;
+    }
+    @include mobile() {
+      width: 100%;
+      flex-direction: column;
+      height: 100%;
+      margin-top: 50px;
+    }
+    h2 {
+      font-size: 28px;
+      font-weight: 500;
+    }
+    li {
+      font-weight: 400;
+      font-size: 15px;
+    }
+    &-i {
+      // border: 1px solid red;
+      width: 50%;
+      width: 400px;
+      height: 500px;
+      @include desktop-xs() {
+        width: 350px;
+        height: 450px;
+      }
+      @include mobile() {
+        height: 100%;
+      }
+      ul {
+        display: flex;
+        flex-direction: column;
+        // border: 1px solid grey;
+        padding-left: 40px;
+        height: auto;
+        li {
+          line-height: 35px;
+          width: 90%;
+          @include desktop-xs() {
+            line-height: 30px;
+            font-size: 13px;
+          }
+          @include tablet() {
+            line-height: 24px;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+    &-m {
+      // border: 2px solid green;
+      width: 400px;
+      height: 500px;
+      @include desktop-xs() {
+        width: 350px;
+        height: 450px;
+      }
+      @include mobile() {
+        height: 100%;
+      }
+      ol {
+        margin-bottom: 6px;
+        li {
+          line-height: 21px;
+          width: 90%;
+          margin-bottom: 10px;
+          @include desktop-xs() {
+            line-height: 18px;
+            font-size: 13px;
+          }
+          @include tablet() {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.popup-content.active {
+  /*Shows pop-up content when "active" class is present */
+  visibility: visible;
+}
+
+button {
+  background: #f2f2f2;
+  display: inline-block;
+  margin: 10px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+  @include tablet() {
+    margin: 0;
+    img {
+      width: 30px;
+    }
+  }
+}

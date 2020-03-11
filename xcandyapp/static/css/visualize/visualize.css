@@ -1,0 +1,77 @@
+/***** Colors *****/
+/***** Media Queries *****/
+
+c.canvas-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.canvas-container .canvas-arrow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0px 20px 0px 0px;
+}
+
+@media (max-width: 600px) {
+  .canvas-container .canvas-arrow {
+    margin: 0;
+  }
+}
+
+.canvas-container .canvas-arrow.arrow-right {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  margin: 0px 0px 0px 20px;
+}
+
+@media (max-width: 600px) {
+  .canvas-container .canvas-arrow.arrow-right {
+    margin: 0;
+  }
+}
+
+.canvas-container .canvas-arrow img {
+  width: 30px;
+}
+
+@media (max-width: 800px) {
+  .canvas-container .canvas-arrow img {
+    width: 20px;
+  }
+}
+
+.canvas-container .canvas {
+  width: 80%;
+}
+
+@media screen and (min-width: 1000px) {
+  .canvas-container .canvas {
+    width: 800px;
+  }
+}
+
+@media screen and (max-width: 764px) {
+  .canvas-container .canvas {
+    width: 70%;
+  }
+}
+
+@media (max-width: 600px) {
+  .canvas-container .canvas {
+    width: 88%;
+  }
+}
+
+.container-footer {
+  position: fixed !important;
+  bottom: 0;
+}
+/*# sourceMappingURL=visualize.css.map */

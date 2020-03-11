@@ -1,0 +1,269 @@
+.ul-items-left {
+    z-index: 99;
+  }
+  
+  .help {
+    color: #333333;
+    border-bottom: 2px solid #333;
+    margin-bottom: -2px;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-right .settings {
+    border-bottom: 2px solid #6f6f6f;
+    position: relative;
+    margin-bottom: -2px;
+  }
+  
+  .content {
+    width: 800px;
+    margin: 0 auto;
+  }
+  
+  .title {
+    margin: 50px auto 0 auto;
+    max-width: 800px;
+    font-size: 24px;
+    font-weight: 800;
+    color: #333;
+  }
+  
+  .question {
+    position: relative;
+    background: #ff005c;
+    color: #f2f2f7;
+    margin: 0;
+    padding: 10px 10px 10px 50px;
+    display: block;
+    width: 100%;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    z-index: 0;
+  }
+  
+  .answers {
+    background: #ff005c;
+    color: #f2f2f7;
+    padding: 0px 15px;
+    margin: 0 0 10px 0;
+    padding-left: 50px !important;
+    max-height: 0;
+    overflow: hidden;
+    z-index: 0;
+    position: relative;
+    opacity: 0;
+    -webkit-transition: 0.3s ease-out;
+    transition: 0.3s ease-out;
+  }
+  
+  .questions:checked ~ .answers {
+    max-height: 500px;
+    opacity: 1;
+    padding: 15px;
+    border-radius: 0 0 12px 12px;
+  }
+  
+  .questions:checked ~ .question {
+    border-bottom: 1px solid #ff88b4;
+    border-radius: 12px 12px 0 0;
+  }
+  
+  .plus {
+    position: absolute;
+    color: #f2f2f7;
+    margin-left: 10px;
+    margin-top: 6px;
+    z-index: 1;
+    font-size: 28px;
+    vertical-align: middle;
+    line-height: 100%;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    -webkit-transition: 0.3s ease-out;
+    transition: 0.3s ease-out;
+  }
+  
+  .questions:checked ~ .plus {
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+  
+  .questions {
+    display: none;
+  }
+  
+  form {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  
+  .contact-us {
+    background: #0287bb;
+    max-width: 800px;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    margin: 20px auto;
+    margin-bottom: 80px !important;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 30px 0 30px 0;
+    border-radius: 12px;
+  }
+  
+  .contact-us .items-1 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    width: 800px;
+    margin-bottom: 20px;
+  }
+  
+  .contact-us .items {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    width: 45%;
+    margin: 0 10px;
+  }
+  
+  .contact-us .items label {
+    font-size: 17px;
+    font-weight: 500;
+    color: #f2f2f7;
+    margin-bottom: 10px;
+  }
+  
+  .contact-us .items ::-webkit-input-placeholder {
+    font-size: 17px;
+  }
+  
+  .contact-us .items :-ms-input-placeholder {
+    font-size: 17px;
+  }
+  
+  .contact-us .items ::-ms-input-placeholder {
+    font-size: 17px;
+  }
+  
+  .contact-us .items ::placeholder {
+    font-size: 17px;
+  }
+  
+  .contact-us .items input {
+    width: 100%;
+    height: 50px;
+    background: #f2f2f7;
+    border: none;
+    border-radius: 4px;
+    font-size: 17px;
+    font-family: "Montserrat";
+    padding: 0px 16px;
+  }
+  
+  .contact-us .items-2 {
+    width: calc(90% + 20px);
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  
+  .contact-us .items-2 input {
+    height: 100px;
+  }
+  
+  .contact-us .button {
+    height: 50px;
+    padding: 0 32px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 4px;
+    background: #f2f2f7;
+    font-family: "Montserrat";
+    font-weight: 800;
+    letter-spacing: 1px;
+    font-size: 17px;
+    -ms-flex-item-align: end;
+        align-self: flex-end;
+  }
+  
+  .contact-us .button a {
+    color: #0287bb;
+    text-decoration: none;
+  }
+  
+  @media (max-width: 832px) {
+    .contact-us {
+      max-width: 600px;
+    }
+  }
+  
+  .container-main {
+    margin: 0 16px;
+  }
+  
+  @media (max-width: 832px) {
+    .container-main {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .container-main .title {
+      padding: 0 14px;
+    }
+    .container-main .content {
+      width: calc(100% - 32px);
+    }
+    .container-main form {
+      width: 100%;
+    }
+    .container-main .contact-us {
+      margin: 10px 16px;
+    }
+    .container-main .contact-us .items-1 {
+      width: 100%;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      margin-bottom: 0px;
+    }
+    .container-main .contact-us .items-1 .items {
+      margin: 0 auto;
+      width: calc(100% - 50px);
+    }
+    .container-main .contact-us .items-1 .items-1-1 {
+      margin-bottom: 20px;
+    }
+    .container-main .contact-us .items-2 {
+      width: 100%;
+      margin: 0 auto;
+      width: calc(100% - 50px);
+    }
+  }
+  /*# sourceMappingURL=help.css.map */

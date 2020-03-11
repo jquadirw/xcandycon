@@ -1,24 +1,26 @@
 {% extends 'webapp/base.html' %}
+{% load static %}
 
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/visualize/visualize.css' %}">
 
-<div class="well page">
+<!-- JS -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<!-- JS -->
 
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="pull-left" style="margin-left: 16px">Visualize Your Data</h1>
-        </div>
-        <br/>
+<div class="canvas-container">
+    <div class="canvas-arrow arrow-left"><a href="#">
+        <img src="/assets/arrow-1.svg" alt=""></a>
     </div>
-
-    <div class="col-lg-12">
-        <img style="width: 1100px;height: 35vh;" src="/static/img/visualize/forecast.png">
+    <div class="canvas">
+      <canvas id="lineChart_vis"></canvas>
+      <canvas id="popChart_vis"></canvas>
     </div>
-
-    <div class="col-lg-12">
-        <img style="width: 1100px;height: 35vh;" src="/static/img/visualize/activity.png">
+    <div class="canvas-arrow arrow-right"><a href="#">
+        <img src="{% static 'img/com/arrow-1.svg' %}" alt=""></a>
     </div>
-
 </div>
+
+<script src="{% static 'js/visualize/visualize.js' %}" type="text/javascript"></script>
 
 {% endblock %}
