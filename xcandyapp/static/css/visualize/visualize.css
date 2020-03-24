@@ -1,7 +1,7 @@
 /***** Colors *****/
 /***** Media Queries *****/
 
-c.canvas-container {
+.canvas-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

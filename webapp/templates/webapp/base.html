@@ -32,17 +32,17 @@
             <ol class="nl-item"><a class="home" href="/home">Home</a></ol>
             <ol class="nl-item"><a href="/visualize">Visualize</a></ol>
             <ol class="nl-item"><a href="/learn">Learn</a></ol>
-            <ol class="nl-item"><a href="/recipe">Recipe</a></ol>
+            <ol class="nl-item"><a href="/recipe">MyDiet</a></ol>
             <ol class="nl-item"><a href="/help">Help</a></ol>
-            <ol class="nl-item nl-item-0"><a href="/settings">Settings</a></ol>
-            <ol class="nl-item nl-item-0"><a href="/logout">Logout</a></ol>
+            <ol class="nl-item nl-item-0"><a href="/settings"><img src="{% static 'img/com/settings.svg' %}" alt=""></a></ol>
+            <ol class="nl-item nl-item-0"><a href="/logout"><img src="{% static 'img/com/logout.svg' %}" alt=""></a></ol>
           </ul>
 
         </div>
 
         <div class="nav-right">
-          <div class="nr-item"><a href="/settings">Settings</a></div>
-          <div class="nr-item"><a href="/login">Logon</a></div>
+          <div class="nr-item"><a href="/settings"><img src="{% static 'img/com/settings.svg' %}" alt=""></a></div>
+          <div class="nr-item"><a href="/login"><img src="{% static 'img/com/logout.svg' %}" alt=""></a></div>
         </div>
       </ul>
     </nav>
@@ -53,15 +53,11 @@
   {% block content %}{% endblock %}
   <!-- Content End -->
 
-  <footer class="footer">
-    <div class="container{% if page == "checks" or page == "details" %}-fluid{% endif %}">
-    <ul>
-        <li>
-            xCandy &copy; 2020 All Rights Reserved
-        </li>
-    </ul>
-    </div>
+ <div class="container-footer">
+  <footer>
+    <p>xCandy 2020 ⓒ All Rights Reserved</p>
   </footer>
+</div>
 </body>
 
 </html>
