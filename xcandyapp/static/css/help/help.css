@@ -226,6 +226,7 @@ form {
 
 .container-main {
   margin: 0 16px;
+  display: block;
 }
 
 @media (max-width: 832px) {

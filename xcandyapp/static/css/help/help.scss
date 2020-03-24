@@ -211,6 +211,7 @@ form {
 .container-main {
   // border: 1px solid red;
   margin: 0 16px;
+  display: block;
   @include tablet() {
     max-width: 600px;
     margin: 0 auto;
