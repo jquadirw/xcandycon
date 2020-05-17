@@ -22,6 +22,8 @@ import seaborn as sns
 import urllib, base64
 import io
 
+from .models import LiveData
+
 from .models import Product
 from .models import Function
 from .forms import FrameForm
@@ -47,6 +49,7 @@ def index(request):
 
 @login_required
 def home(request):
+    liveData = LiveData.object.filter(user__profile__email='jimjosephjohn@gmail.com')
     return render(request, 'webapp/home.html')
 
 @login_required

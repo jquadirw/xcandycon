@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'social_django',
     'crispy_forms',
     'widget_tweaks',
-    'bootstrap_modal_forms',
+    'bootstrap_modal_forms'
 ]
 
 MIDDLEWARE = [
@@ -79,13 +79,23 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#    }
+#}
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'xcandydb',
+        'USER': 'xcandydb_owner',
+        'PASSWORD': 'abcd.1234',
+        'HOST': '',
+        'PORT': '',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
