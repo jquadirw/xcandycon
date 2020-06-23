@@ -86,13 +86,24 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 #    }
 #}
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'xcandydb',
+#         'USER': 'xcandydb_owner',
+#         'PASSWORD': 'abcd.1234',
+#         'HOST': 'localhost',
+#         'PORT': '3306',
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'xcandydb',
-        'USER': 'xcandydb_owner',
-        'PASSWORD': 'abcd.1234',
-        'HOST': 'localhost',
+        'NAME': 'heroku_9887d068c78a589',
+        'USER': 'ba75e39f324d83',
+        'PASSWORD': '39d06b3f',
+        'HOST': 'us-cdbr-east-05.cleardb.net',
         'PORT': '3306',
     }
 }
