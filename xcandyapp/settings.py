@@ -92,8 +92,8 @@ DATABASES = {
         'NAME': 'xcandydb',
         'USER': 'xcandydb_owner',
         'PASSWORD': 'abcd.1234',
-        'HOST': '',
-        'PORT': '',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 

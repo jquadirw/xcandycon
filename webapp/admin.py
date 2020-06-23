@@ -1,10 +1,18 @@
 from django.contrib import admin
-from .models import Product
-from .models import Function
-from .models import Correlation
-from .models import ColorScheme
+from .models import User
+from .models import Indicator
+from .models import LiveState
+from .models import LiveData
 
-admin.site.register(Product)
-admin.site.register(Function)
-admin.site.register(Correlation)
-admin.site.register(ColorScheme)
+from .models import ForecastState
+from .models import ForecastLearned
+from .models import Forecast
+
+admin.site.register(User)
+admin.site.register(Indicator)
+admin.site.register(LiveState)
+admin.site.register(LiveData)
+
+admin.site.register(ForecastState)
+admin.site.register(ForecastLearned)
+admin.site.register(Forecast)

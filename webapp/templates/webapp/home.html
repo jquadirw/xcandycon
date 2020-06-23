@@ -15,7 +15,7 @@
         <div class="c1-item1">
           <h6>Live data</h6>
           <div class="data-big">
-            <h4>104 <span class="db-unit" class="unit">mg/dl</span></h4>
+            <h4>{{ livedata.glucose }} <span class="db-unit" class="unit">{{ livedata.glucose_unit }}</span></h4>
             <img src="{% static 'img/com/arrow.svg' %}" alt="">
           </div>
           <p>CONNECTED</p>
@@ -27,10 +27,9 @@
         <div class="c1-item2">
           <h6>Forecast</h6>
           <div class="data-big">
-            <div><span class="duration"> 60min</span> <span class="measure">135</span> <span class="unit">mg/dl</span>
-            </div>
-            <div><span class="duration"> 60min</span> <span class="measure">155</span> <span class="unit">mg/dl</span>
-            </div>
+            {% for forecast in forecasts %}
+              <div><span class="duration">{{forecast.interval}}{{forecast.interval_unit}}</span> <span class="measure">{{forecast.value}}</span> <span class="unit">{{forecast.unit}}</span></div>
+            {% endfor %}
           </div>
           <div class="bar">
             <div class="hp-value"></div>
@@ -96,8 +95,9 @@
         <div class="c1-item5">
           <h6>Forecast Accuracy</h6>
           <div class="data-big">
-            <div><span class="duration"> 60min</span> <span class="measure">59</span> <span>%</span> </div>
-            <div><span class="duration"> 60min</span> <span class="measure">69</span> <span>%</span> </div>
+            {% for forecast in forecasts %}
+              <div><span class="duration">{{forecast.interval}}{{forecast.interval_unit}}</span> <span class="measure">{{forecast.percent}}</span> <span>%</span> </div>
+            {% endfor %}
           </div>
           <div class="bar">
             <div class="learn-value"></div>

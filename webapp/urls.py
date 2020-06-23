@@ -20,6 +20,4 @@ urlpatterns = [
     path('learn/', views.learn),
     path('help/', views.help),
     path('settings/', views.settings),
-    path('ml/', views.mlearn, name='ml_home'),
-    path('ml/init', views.init_ml, name='init_ml'),
 ]
