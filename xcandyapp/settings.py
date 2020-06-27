@@ -104,7 +104,8 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # }
 
 # PostgreSQL (heroku)
-SECRET_KEY = config('SECRET_KEY')
+# SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)
 
