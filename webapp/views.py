@@ -23,10 +23,12 @@ import seaborn as sns
 import urllib, base64
 import io
 
-from .models import LiveData
+from .models import Livedata
 from .models import Forecast
+from .models import Accuracy
 from .models import Glucose
-from .models import ActivityRecommended
+from .models import Recommended
+from .models import Activitylog
 
 from django.core.cache import cache
 
@@ -44,20 +46,44 @@ def index(request):
 @login_required
 def home(request):
     try:
-        livedata = LiveData.objects.latest('id')
-        forecasts = Forecast.objects.all().order_by('-id')[:2][::-1]
-        recommended = ActivityRecommended.objects.latest('id')
-        glucose = Glucose.objects.latest('id')
-    except LiveData.DoesNotExist:
-        livedata = None
-    except Forecast.DoesNotExist:
-        livedata = None
-    except ActivityRecommended.DoesNotExist:
-        livedata = None
-    except Glucose.DoesNotExist:
+        livedata = Livedata.objects.latest('id')
+    except Livedata.DoesNotExist:
         livedata = None
 
-    return render(request, 'webapp/home.html', {'livedata': livedata, 'forecasts': forecasts})
+    try:
+        forecasts = Forecast.objects.all().order_by('-id')[:2][::-1]
+    except Forecast.DoesNotExist:
+        forecasts = None
+
+    try:
+        accuracies = Accuracy.objects.all().order_by('-id')[:2][::-1]
+    except Accuracy.DoesNotExist:
+        accuracies = None
+
+    try:
+        recommended = Recommended.objects.latest('id')
+    except Recommended.DoesNotExist:
+        recommended = None
+
+    try:
+        glucose = Glucose.objects.latest('id')
+    except Glucose.DoesNotExist:
+        glucose = None
+
+    try:
+        activitylog = Activitylog.objects.latest('id')
+    except Activitylog.DoesNotExist:
+        activitylog = None
+
+    context = {
+                'livedata': livedata, 
+                'forecasts': forecasts, 
+                'accuracies': accuracies, 
+                'glucose': glucose, 
+                'activitylog': activitylog, 
+                'recommended': recommended
+               }
+    return render(request, 'webapp/home.html', context)
 
 @login_required
 def profile(request):

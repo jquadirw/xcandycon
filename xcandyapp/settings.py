@@ -86,6 +86,22 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 #    }
 #}
 
+# PostgreSQL
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'OPTIONS': {
+            'options': '-c search_path=xcandymin'
+        },
+        'NAME': 'xcandydb',
+        'USER': 'postgres',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+
+# MySQL settings
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
@@ -97,16 +113,17 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'heroku_9887d068c78a589',
-        'USER': 'ba75e39f324d83',
-        'PASSWORD': '39d06b3f',
-        'HOST': 'us-cdbr-east-05.cleardb.net',
-        'PORT': '3306',
-    }
-}
+# Heroku MySQL
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'heroku_9887d068c78a589',
+#         'USER': 'ba75e39f324d83',
+#         'PASSWORD': '39d06b3f',
+#         'HOST': 'us-cdbr-east-05.cleardb.net',
+#         'PORT': '3306',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators

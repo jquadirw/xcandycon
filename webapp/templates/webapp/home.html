@@ -15,10 +15,10 @@
         <div class="c1-item1">
           <h6>Live data</h6>
           <div class="data-big">
-            <h4>{{ livedata.glucose }} <span class="db-unit" class="unit">{{ livedata.glucose_unit }}</span></h4>
+            <h4>{{ livedata.glucose }} <span class="db-unit" class="unit">mg/dl</span></h4>
             <img src="{% static 'img/com/arrow.svg' %}" alt="">
           </div>
-          <p>CONNECTED</p>
+          <p>{{ livedata.state.name }}</p>
         </div>
       </div>
       <!-- Item 1 -->
@@ -28,7 +28,7 @@
           <h6>Forecast</h6>
           <div class="data-big">
             {% for forecast in forecasts %}
-              <div><span class="duration">{{forecast.interval}}{{forecast.interval_unit}}</span> <span class="measure">{{forecast.value}}</span> <span class="unit">{{forecast.unit}}</span></div>
+              <div><span class="duration">{{forecast.interval}}{{forecast.interval_unit}}</span> <span class="measure">{{forecast.value}}</span> <span class="unit">mg/dl</span></div>
             {% endfor %}
           </div>
           <div class="bar">
@@ -68,13 +68,13 @@
         <div class="c1-item4">
           <h6>Average Glucose</h6>
           <div class="data-big">
-            <h4>094 <span class="db-unit" class="unit">mg/dl</span></h4>
+            <h4>{{ glucose.value|stringformat:"03d" }} <span class="db-unit" class="unit">mg/dl</span></h4>
           </div>
           <div class="bar">
-            <div class="hp-value"></div>
+            <div class="home-hp-value"></div>
             <p class="hp-title"><a
                 style="color: #5c5c5c; text-decoration: none; background: #ffffff; margin-left: 20px; padding: 0px 4px; border-radius: 2px;"
-                href="#">06</a> HYPO EVENTS
+                href="#">{{ glucose.num_events|stringformat:"02d" }}</a> HYPO EVENTS
             </p>
           </div>
 
@@ -95,8 +95,8 @@
         <div class="c1-item5">
           <h6>Forecast Accuracy</h6>
           <div class="data-big">
-            {% for forecast in forecasts %}
-              <div><span class="duration">{{forecast.interval}}{{forecast.interval_unit}}</span> <span class="measure">{{forecast.percent}}</span> <span>%</span> </div>
+            {% for accuracy in accuracies %}
+              <div><span class="duration">{{accuracy.interval}}{{accuracy.interval_unit}}</span> <span class="measure">{{accuracy.percent}}</span> <span>%</span> </div>
             {% endfor %}
           </div>
           <div class="bar">

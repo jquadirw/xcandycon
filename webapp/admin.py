@@ -1,18 +1,41 @@
 from django.contrib import admin
-from .models import User
-from .models import Indicator
-from .models import LiveState
-from .models import LiveData
+from .models import Livestate
+from .models import Livedata
+from .models import Direction
 
-from .models import ForecastState
-from .models import ForecastLearned
+from .models import Forecaststate
+from .models import Forecastlevel
 from .models import Forecast
 
-admin.site.register(User)
-admin.site.register(Indicator)
-admin.site.register(LiveState)
-admin.site.register(LiveData)
+from .models import Accuracy
+from .models import Accuracylevel
+from .models import Accuracystate
 
-admin.site.register(ForecastState)
-admin.site.register(ForecastLearned)
+from .models import Glucose
+from .models import Recommended
+
+from .models import Activitylog
+from .models import Actytype
+from .models import Actysubtype
+from .models import Actychoice
+
+admin.site.register(Livestate)
+admin.site.register(Livedata)
+admin.site.register(Direction)
+
+admin.site.register(Forecaststate)
+admin.site.register(Forecastlevel)
 admin.site.register(Forecast)
+
+admin.site.register(Accuracy)
+admin.site.register(Accuracylevel)
+admin.site.register(Accuracystate)
+
+admin.site.register(Glucose)
+admin.site.register(Recommended)
+
+admin.site.register(Activitylog)
+admin.site.register(Actytype)
+admin.site.register(Actysubtype)
+admin.site.register(Actychoice)
+
