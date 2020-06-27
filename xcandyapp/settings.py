@@ -109,8 +109,8 @@ DATABASES = {
             'options': '-c search_path=xcandymin'
         },
         'NAME': 'xcandydb',
-        'USER': 'postgres',
-        'PASSWORD': '',
+        'USER': 'vqbknlmuhpctir',
+        'PASSWORD': '5f1c9300f8068cb957a4296818a03579b19cf8d7c12b3065c49129d03b3d3475',
         'HOST': 'ec2-107-21-255-181.compute-1.amazonaws.com',
         'PORT': '5432',
     }
