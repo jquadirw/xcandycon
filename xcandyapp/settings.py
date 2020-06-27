@@ -106,8 +106,11 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # PostgreSQL (heroku)
 # SECRET_KEY = config('SECRET_KEY')
 SECRET_KEY = os.environ.get('SECRET_KEY')
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
+DATABASES = {
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
+}
 
 # MySQL settings
 # DATABASES = {
@@ -179,9 +182,6 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'xcandyapp/static'),
 )
 
-MEDIA_ROOT = os.path.join(BASE_DIR,'media')
-MEDIA_URL = '/media/'
-
 # print("static root = ", STATIC_ROOT)
 # print("static url = ", STATIC_URL)
 
@@ -238,4 +238,3 @@ CACHE_TTL = 60 * 15
 import django_heroku
 django_heroku.settings(locals())
 
-ALLOWED_HOSTS = ['xcandyapp.herokuapp.com', 'localhost']
