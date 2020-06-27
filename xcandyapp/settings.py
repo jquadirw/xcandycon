@@ -102,7 +102,6 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # }
 
 # PostgreSQL (heroku)
-DEBUG = config('DEBUG', default=False, cast=bool)
 DATABASES = {
     'default': dj_database_url.config(
         default=config('DATABASE_URL')
