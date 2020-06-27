@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '96dt2k*z!ulip__5rbvane8=!@5xxh1fs$7b8e2^s_)p%+pb7x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'xcandyapp.herokuapp.com']
 
 
 # Application definition
@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'social_django',
     'crispy_forms',
     'widget_tweaks',
-    'bootstrap_modal_forms'
+    'bootstrap_modal_forms',
+    'whitenoise.runserver_nostatic'
 ]
 
 MIDDLEWARE = [
@@ -104,12 +105,8 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # PostgreSQL (heroku)
 SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG', default=False, cast=bool)
-DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL')
-    )
-}
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
 
 # MySQL settings
 # DATABASES = {
@@ -173,9 +170,16 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'xcandyapp/static'),
 )
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_URL = '/media/'
 
 # print("static root = ", STATIC_ROOT)
 # print("static url = ", STATIC_URL)
