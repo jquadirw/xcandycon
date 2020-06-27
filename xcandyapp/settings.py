@@ -102,18 +102,11 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # }
 
 # PostgreSQL (heroku)
+DEBUG = config('DEBUG', default=False, cast=bool)
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'OPTIONS': {
-            'options': '-c search_path=xcandymin'
-        },
-        'NAME': 'xcandydb',
-        'USER': 'vqbknlmuhpctir',
-        'PASSWORD': '5f1c9300f8068cb957a4296818a03579b19cf8d7c12b3065c49129d03b3d3475',
-        'HOST': 'ec2-107-21-255-181.compute-1.amazonaws.com',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
 }
 
 # MySQL settings
