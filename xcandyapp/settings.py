@@ -86,18 +86,28 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 #    }
 #}
 
-# PostgreSQL
+# PostgreSQL (local)
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'OPTIONS': {
+#             'options': '-c search_path=xcandymin'
+#         },
+#         'NAME': 'xcandydb',
+#         'USER': 'postgres',
+#         'PASSWORD': '',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
+
+# PostgreSQL (heroku)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'OPTIONS': {
             'options': '-c search_path=xcandymin'
-        },
-        'NAME': 'xcandydb',
-        'USER': 'postgres',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        }
     }
 }
 
