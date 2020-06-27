@@ -107,7 +107,12 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'OPTIONS': {
             'options': '-c search_path=xcandymin'
-        }
+        },
+        'NAME': 'xcandydb',
+        'USER': 'postgres',
+        'PASSWORD': '',
+        'HOST': 'ec2-107-21-255-181.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
