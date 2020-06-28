@@ -103,7 +103,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 #     }
 # }
 
-DATABASES['default'] =  dj_database_url.config()
+DATABASES = { 'default': dj_database_url.config() }
 
 # PostgreSQL (heroku)
 # SECRET_KEY = config('SECRET_KEY')
