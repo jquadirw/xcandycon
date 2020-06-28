@@ -34,10 +34,7 @@ from django.core.cache import cache
 logger = logging.getLogger(__name__)
 
 def index(request):
-    functions = Function.objects.all()
-
     context = {
-        'functions': functions,
     }
 
     return render(request, 'webapp/index.html', context)
