@@ -135,7 +135,7 @@ def logout(request):
 
 # Error Pages
 def not_found(request, exception, template_name="404.html"):
-    response = render_to_response("webapp/errors/404.html")
+    response = render("webapp/errors/404.html")
     response.status_code = 404
     return response
 
@@ -148,11 +148,11 @@ def server_error(request):
     return render(request, 'webapp/errors/500.html', context)
 
 def permission_denied(request, exception, template_name="403.html"):
-    response = render_to_response("webapp/errors/403.html")
+    response = render("webapp/errors/403.html")
     response.status_code = 403
     return response
 
 def bad_request(request, exception, template_name="400.html"):
-    response = render_to_response("webapp/errors/400.html")
+    response = render("webapp/errors/400.html")
     response.status_code = 400
     return response
