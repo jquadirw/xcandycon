@@ -21,7 +21,7 @@ matplotlib==3.2.2
 numpy==1.19.0
 oauthlib==3.1.0
 pandas==1.0.5
-psycopg2==2.8.5
+psycopg2-binary==2.8.5
 pyasn1==0.4.8
 pycparser==2.20
 PyJWT==1.7.1
