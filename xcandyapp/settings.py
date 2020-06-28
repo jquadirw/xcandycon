@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '96dt2k*z!ulip__5rbvane8=!@5xxh1fs$7b8e2^s_)p%+pb7x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'xcandyapp.herokuapp.com']
 
@@ -103,14 +103,15 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 #     }
 # }
 
+DATABASES['default'] =  dj_database_url.config()
+
 # PostgreSQL (heroku)
 # SECRET_KEY = config('SECRET_KEY')
-SECRET_KEY = os.environ.get('SECRET_KEY')
-DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL')
-    )
-}
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default=os.environ.get('DATABASE_URL')
+#     )
+# }
 
 # MySQL settings
 # DATABASES = {
