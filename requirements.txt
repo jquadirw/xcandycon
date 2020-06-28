@@ -3,3 +3,4 @@ certifi==2020.6.20
 Django==3.0.7
 pytz==2020.1
 sqlparse==0.3.1
+dj_database_url==0.5.0
