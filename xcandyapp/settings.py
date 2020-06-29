@@ -111,22 +111,22 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # }
 
 # Postgres (heroku)
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'OPTIONS': {
-            'options': '-c search_path=xcandymin'
-        },
-        'NAME': 'd1vmjd9d8sj105',
-        'USER': 'vqbknlmuhpctir',
-        'PASSWORD': '5f1c9300f8068cb957a4296818a03579b19cf8d7c12b3065c49129d03b3d3475',
-        'HOST': 'ec2-107-21-255-181.compute-1.amazonaws.com',
-        'PORT': '5432',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'OPTIONS': {
+#             'options': '-c search_path=xcandymin'
+#         },
+#         'NAME': 'd1vmjd9d8sj105',
+#         'USER': 'vqbknlmuhpctir',
+#         'PASSWORD': '5f1c9300f8068cb957a4296818a03579b19cf8d7c12b3065c49129d03b3d3475',
+#         'HOST': 'ec2-107-21-255-181.compute-1.amazonaws.com',
+#         'PORT': '5432',
+#     }
+# }
 
-# DATABASES = {}
-# DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+DATABASES = {}
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 # PostgreSQL (heroku)
 # SECRET_KEY = config('SECRET_KEY')
