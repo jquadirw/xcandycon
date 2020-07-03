@@ -96,35 +96,35 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 #}
 
 # PostgreSQL (local)
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'OPTIONS': {
-            'options': '-c search_path=xcandymin'
-        },
-        'NAME': 'xcandydb',
-        'USER': 'postgres',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
-
-# Postgres (heroku)
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
 #         'OPTIONS': {
-#             'options': '-c search_path=xcandymin',
-#             'sslmode': 'require'
+#             'options': '-c search_path=xcandymin'
 #         },
-#         'NAME': 'dcntkafakmavsh',
-#         'USER': 'yeqtzgwwrjzgwz',
-#         'PASSWORD': '80476059c5b1b48e92a9579c8ab284eb72ca35f72355a5f152a6ec028c6929d7',
-#         'HOST': 'ec2-52-72-65-76.compute-1.amazonaws.com',
+#         'NAME': 'xcandydb',
+#         'USER': 'postgres',
+#         'PASSWORD': '',
+#         'HOST': 'localhost',
 #         'PORT': '5432',
 #     }
 # }
+
+# Postgres (heroku)
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'OPTIONS': {
+            'options': '-c search_path=xcandymin',
+            'sslmode': 'require'
+        },
+        'NAME': 'dcntkafakmavsh',
+        'USER': 'yeqtzgwwrjzgwz',
+        'PASSWORD': '80476059c5b1b48e92a9579c8ab284eb72ca35f72355a5f152a6ec028c6929d7',
+        'HOST': 'ec2-52-72-65-76.compute-1.amazonaws.com',
+        'PORT': '5432',
+    }
+}
 
 # DATABASES = {}
 # DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
