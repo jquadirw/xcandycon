@@ -436,10 +436,10 @@ ul {
   img.north {
     position: absolute;
     width: 35px;
-    transform: translate(265%, -260%) rotate(-50deg);
+    transform: translate(310%, -255%) rotate(-50deg);
     @include mobile() {
       width: 30px;
-      transform: translate(265%, -260%) rotate(-50deg);
+      transform: translate(305%, -260%) rotate(-50deg);
     }
   }
 }

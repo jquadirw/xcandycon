@@ -143,8 +143,8 @@
 .data-big img.north {
   position: absolute;
   width: 35px;
-  -webkit-transform: translate(265%, -260%) rotate(-50deg);
-          transform: translate(265%, -260%) rotate(-50deg);
+  -webkit-transform: translate(310%, -255%) rotate(-50deg);
+          transform: translate(310%, -255%) rotate(-50deg);
 }
 .data-big img.northeast {
   position: absolute;
