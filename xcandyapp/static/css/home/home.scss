@@ -448,10 +448,10 @@ ul {
   img.northeast {
     position: absolute;
     width: 35px;
-    transform: translate(340%, -270%);
+    transform: translate(325%, -250%);
     @include mobile() {
       width: 30px;
-      transform: translate(335%, -275%);
+      transform: translate(320%, -255%);
     }
   }
 }
@@ -460,10 +460,10 @@ ul {
   img.east {
     position: absolute;
     width: 35px;
-    transform: translate(340%, -250%) rotate(+40deg);
+    transform: translate(330%, -250%) rotate(+40deg);
     @include mobile() {
       width: 30px;
-      transform: translate(335%, -255%) rotate(+40deg);
+      transform: translate(325%, -255%) rotate(+40deg);
     }
   }
 }
@@ -472,10 +472,10 @@ ul {
   img.southeast {
     position: absolute;
     width: 35px;
-    transform: translate(340%, -240%) rotate(+85deg);
+    transform: translate(325%, -232%) rotate(+85deg);
     @include mobile() {
       width: 30px;
-      transform: translate(335%, -245%) rotate(+85deg);
+      transform: translate(320%, -237%) rotate(+85deg);
     }
   }
 }
@@ -484,10 +484,10 @@ ul {
   img.south {
     position: absolute;
     width: 35px;
-    transform: translate(320%, -240%) rotate(+130deg);
+    transform: translate(320%, -230%) rotate(+130deg);
     @include mobile() {
       width: 30px;
-      transform: translate(315%, -245%) rotate(+130deg);
+      transform: translate(315%, -235%) rotate(+130deg);
     }
   }
 }

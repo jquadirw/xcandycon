@@ -149,26 +149,26 @@
 .data-big img.northeast {
   position: absolute;
   width: 35px;
-  -webkit-transform: translate(340%, -270%);
-          transform: translate(340%, -270%);
+  -webkit-transform: translate(325%, -250%);
+          transform: translate(325%, -250%);
 }
 .data-big img.east {
   position: absolute;
   width: 35px;
-  -webkit-transform: translate(340%, -250%) rotate(+40deg);
-          transform: translate(340%, -250%) rotate(+40deg);
+  -webkit-transform: translate(330%, -250%) rotate(+40deg);
+          transform: translate(330%, -250%) rotate(+40deg);
 }
 .data-big img.southeast {
   position: absolute;
   width: 35px;
-  -webkit-transform: translate(340%, -240%) rotate(+85deg);
-          transform: translate(340%, -240%) rotate(+85deg);
+  -webkit-transform: translate(325%, -232%) rotate(+85deg);
+          transform: translate(325%, -232%) rotate(+85deg);
 }
 .data-big img.south {
   position: absolute;
   width: 35px;
-  -webkit-transform: translate(320%, -240%) rotate(+130deg);
-          transform: translate(320%, -240%) rotate(+130deg);
+  -webkit-transform: translate(320%, -230%) rotate(+130deg);
+          transform: translate(320%, -230%) rotate(+130deg);
 }
 
 @media (max-width: 600px) {
