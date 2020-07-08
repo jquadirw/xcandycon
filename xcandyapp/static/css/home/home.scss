@@ -431,6 +431,37 @@ ul {
   }
 }
 
+.north {
+  transform: translate(320%, -260%) rotate(-50deg);
+}
+
+.northeast {
+  transform: translate(340%, -270%);
+}
+
+.east {
+  transform: translate(340%, -250%) rotate(+40deg);
+}
+
+.southeast {
+  transform: translate(340%, -240%) rotate(+85deg);
+}
+
+.south {
+  transform: translate(320%, -240%) rotate(+130deg);
+}
+.data-big {
+  // border: 1px solid red;
+  img.north {
+    position: absolute;
+    width: 35px;
+    transform: translate(320%, -260%) rotate(-50deg);
+    @include mobile() {
+      width: 30px;
+      transform: translate(315%, -265%) rotate(-50deg);
+    }
+  }
+}
 .data-big {
   // border: 1px solid red;
   img.northeast {
@@ -442,7 +473,21 @@ ul {
       transform: translate(335%, -275%);
     }
   }
-
+}
+.data-big {
+  // border: 1px solid red;
+  img.east {
+    position: absolute;
+    width: 35px;
+    transform: translate(340%, -250%) rotate(+40deg);
+    @include mobile() {
+      width: 30px;
+      transform: translate(335%, -255%) rotate(+40deg);
+    }
+  }
+}
+.data-big {
+  // border: 1px solid red;
   img.southeast {
     position: absolute;
     width: 35px;
@@ -450,6 +495,18 @@ ul {
     @include mobile() {
       width: 30px;
       transform: translate(335%, -245%) rotate(+85deg);
+    }
+  }
+}
+.data-big {
+  // border: 1px solid red;
+  img.south {
+    position: absolute;
+    width: 35px;
+    transform: translate(320%, -240%) rotate(+130deg);
+    @include mobile() {
+      width: 30px;
+      transform: translate(315%, -245%) rotate(+130deg);
     }
   }
 }
@@ -750,22 +807,3 @@ input:checked + .slider:before {
   }
 }
 
-.north {
-  transform: translate(320%, -260%) rotate(-50deg);
-}
-
-.northeast {
-  transform: translate(340%, -270%);
-}
-
-.east {
-  transform: translate(340%, -250%) rotate(+40deg);
-}
-
-.southeast {
-  transform: translate(340%, -240%) rotate(+85deg);
-}
-
-.south {
-  transform: translate(320%, -240%) rotate(+130deg);
-}
