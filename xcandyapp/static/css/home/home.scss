@@ -431,25 +431,6 @@ ul {
   }
 }
 
-.north {
-  transform: translate(320%, -260%) rotate(-50deg);
-}
-
-.northeast {
-  transform: translate(340%, -270%);
-}
-
-.east {
-  transform: translate(340%, -250%) rotate(+40deg);
-}
-
-.southeast {
-  transform: translate(340%, -240%) rotate(+85deg);
-}
-
-.south {
-  transform: translate(320%, -240%) rotate(+130deg);
-}
 .data-big {
   // border: 1px solid red;
   img.north {
