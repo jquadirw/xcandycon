@@ -433,13 +433,23 @@ ul {
 
 .data-big {
   // border: 1px solid red;
-  img {
+  img.northeast {
     position: absolute;
     width: 35px;
     transform: translate(340%, -270%);
     @include mobile() {
       width: 30px;
       transform: translate(335%, -275%);
+    }
+  }
+
+  img.southeast {
+    position: absolute;
+    width: 35px;
+    transform: translate(340%, -240%) rotate(+85deg);
+    @include mobile() {
+      width: 30px;
+      transform: translate(335%, -245%) rotate(+85deg);
     }
   }
 }
