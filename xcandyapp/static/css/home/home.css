@@ -143,8 +143,8 @@
 .data-big img.north {
   position: absolute;
   width: 35px;
-  -webkit-transform: translate(320%, -260%) rotate(-50deg);
-          transform: translate(320%, -260%) rotate(-50deg);
+  -webkit-transform: translate(265%, -260%) rotate(-50deg);
+          transform: translate(265%, -260%) rotate(-50deg);
 }
 .data-big img.northeast {
   position: absolute;
@@ -192,7 +192,7 @@
 }
 
 .c1-item1 h4 span {
-  font-size: 17px;
+  font-size: 14px;
   margin-left: -8px;
 }
 
