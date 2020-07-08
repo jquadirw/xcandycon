@@ -16,6 +16,19 @@
           <h6>Live data</h6>
           <div class="data-big">
             <h4>{{ livedata.glucose }} <span class="db-unit" class="unit">mg/dl</span></h4>
+            {% if livedata.direction == 1 or if livedata.direction == 2 %}
+              <img class="north" src="{% static 'img/com/arrow.svg' %}" alt="">
+            {% elif livedata.direction == 3 or if livedata.direction == 4 %}
+              <img class="south" src="{% static 'img/com/arrow.svg' %}" alt="">
+            {% elif livedata.direction == 5 %}
+              <img class="northeast" src="{% static 'img/com/arrow.svg' %}" alt="">
+            {% elif livedata.direction == 6 %}
+              <img class="southeast" src="{% static 'img/com/arrow.svg' %}" alt="">
+            {% elif livedata.direction == 7 %}
+              <img class="south" src="{% static 'img/com/arrow.svg' %}" alt="">
+            {% else %}
+              <h4>'retail'</h4>
+            {% endif %}
             <img src="{% static 'img/com/arrow.svg' %}" alt="">
           </div>
           <p>{{ livedata.state.name }}</p>

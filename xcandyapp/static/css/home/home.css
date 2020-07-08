@@ -483,4 +483,25 @@ input:checked + .slider:before {
 .graph canvas {
   width: auto;
 }
+
+.north {
+  transform: translate(320%, -260%) rotate(-50deg);
+}
+
+.northeast {
+  transform: translate(340%, -270%) rotate(+40deg);
+}
+
+.east {
+  transform: translate(340%, -250%) rotate(+40deg);
+}
+
+.southeast {
+  transform: translate(340%, -240%) rotate(+85deg);
+}
+
+.south {
+  transform: translate(320%, -240%) rotate(+130deg);
+}
+
 /*# sourceMappingURL=home.css.map */
