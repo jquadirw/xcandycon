@@ -14,8 +14,8 @@
       <div class="c1-item c1-item1-container">
         <div class="c1-item1">
           {% if livedata.state.id == 1 %}
-            <h6>Live data</h6>
-          {% else %}
+            <h6>Live data ({{ 3 }} mins ago)</h6>
+          {% elif livedata.state.id == 2 %}
             <h6>Last data ({{ 10 }} mins ago)</h6>
           {% endif %}
           <div class="data-big">
@@ -34,7 +34,7 @@
           </div>
           {% if livedata.state.id == 1 %}
             <p>{{ livedata.state.name }}</p>
-          {% else %}
+          {% elif livedata.state.id == 2 %}
             <p class="offline">{{ livedata.state.name }}</p>
           {% endif %}
         </div>
