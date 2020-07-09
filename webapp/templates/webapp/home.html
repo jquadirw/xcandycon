@@ -28,7 +28,11 @@
               <img class="east" src="{% static 'img/com/arrow.svg' %}" alt="">
             {% endif %}
           </div>
-          <p>{{ livedata.state.name }}</p>
+          {% if livedata.state.id == 1 %}
+            <p>{{ livedata.state.name }}</p>
+          {% else %}
+            <p class="offline">{{ livedata.state.name }}</p>
+          {% endif %}
         </div>
       </div>
       <!-- Item 1 -->
