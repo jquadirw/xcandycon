@@ -6,7 +6,7 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
-
+import pandas as pd
 
 class Accuracy(models.Model):
     since = models.DateTimeField()
@@ -253,6 +253,9 @@ class Livedata(models.Model):
     class Meta:
         managed = False
         db_table = 'livedata'
+
+    def timediff(self, instance):
+        return (round(pd.to_numeric(((pd.to_datetime(create_date) - pd.to_datetime(since)).value/10**9/60))))
 
 
 class Livestate(models.Model):
