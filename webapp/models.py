@@ -254,8 +254,9 @@ class Livedata(models.Model):
         managed = False
         db_table = 'livedata'
 
-    def timediff(self, instance):
-        return (round(pd.to_numeric(((pd.to_datetime(create_date) - pd.to_datetime(since)).value/10**9/60))))
+    @property
+    def timediff(self):
+        return (round(pd.to_numeric(((pd.to_datetime(self.create_date) - pd.to_datetime(self.since)).value/10**9/60))))
 
 
 class Livestate(models.Model):
