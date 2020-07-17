@@ -34,10 +34,86 @@ from django.core.cache import cache
 logger = logging.getLogger(__name__)
 
 def index(request):
-    context = {
-    }
-
+    context = {}
     return render(request, 'webapp/index.html', context)
+
+def login(request):
+    if request.user.is_authenticated:
+        return redirect("home")
+
+    form = SignInForm(request.POST or None)
+    if request.method == "POST" and form.is_valid():
+        user = form.login(request)
+
+        # If we have a User object, the details are correct.
+        # If None (Python's way of representing the absence of a value), no user
+        # with matching credentials was found.
+        if user:
+            # If the account is valid and active, we can log the user in.
+            # We'll send the user back to the homepage.
+            django_login(request, user)
+            return redirect("home")
+
+    # No context variables to pass to the template system, hence the
+    # blank dictionary object...
+    return render(request, "webapp/login.html", {"form": form})
+
+
+def register(request):
+    if request.method == "POST":
+        form = SignUpForm(data=request.POST)
+        if form.is_valid():
+            user = form.save()
+            user.refresh_from_db()
+            user.profile.email = form.cleaned_data.get("email")
+            user.profile.email = form.cleaned_data.get("password1")
+            user.profile.email = form.cleaned_data.get("password2")
+            user.profile.email = form.cleaned_data.get("poc")
+            user.profile.email = form.cleaned_data.get("url")
+            # user can't login until link confirmed
+            user.is_active = False
+            user.save()
+            current_site = get_current_site(request)
+            subject = "Please Activate Your Account"
+            # load a template like get_template()
+            # and calls its render() method immediately.
+            message = render_to_string(
+                "webapp/includes/activation_request.html",
+                {
+                    "user": user,
+                    "domain": current_site.domain,
+                    "uid": urlsafe_base64_encode(force_bytes(user.pk)),
+                    # method will generate a hash value with user related data
+                    "token": account_activation_token.make_token(user),
+                },
+            )
+            user.email_user(subject, message)
+            return redirect("activation_sent")
+    else:
+        form = SignUpForm()
+    return render(request, "webapp/register.html", {"form": form})
+
+
+def activate(request, uidb64, token):
+    try:
+        uid = force_text(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+    # checking if the user exists, if the token is valid.
+    if user is not None and account_activation_token.check_token(user, token):
+        # if valid set active true
+        user.is_active = True
+        # set signup_confirmation true
+        user.profile.signup_confirmation = True
+        user.save()
+        django_login(request, user)
+        return redirect("home")
+    else:
+        return render(request, "webapp/includes/activation_invalid.html")
+
+def activation_sent_view(request):
+    return render(request, "webapp/includes/activation_sent.html")
 
 @login_required
 def home(request):

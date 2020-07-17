@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'webapp.apps.WebappConfig',
-    'social_django',
     'crispy_forms',
     'widget_tweaks',
     'bootstrap_modal_forms',
@@ -96,35 +95,35 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 #}
 
 # PostgreSQL (local)
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'OPTIONS': {
-#             'options': '-c search_path=xcandymin'
-#         },
-#         'NAME': 'xcandydb',
-#         'USER': 'postgres',
-#         'PASSWORD': '',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     }
-# }
-
-# Postgres (heroku)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'OPTIONS': {
-            'options': '-c search_path=xcandymin',
-            'sslmode': 'require'
+            'options': '-c search_path=xcandymin'
         },
-        'NAME': 'dcntkafakmavsh',
-        'USER': 'yeqtzgwwrjzgwz',
-        'PASSWORD': '80476059c5b1b48e92a9579c8ab284eb72ca35f72355a5f152a6ec028c6929d7',
-        'HOST': 'ec2-52-72-65-76.compute-1.amazonaws.com',
+        'NAME': 'xcandydb',
+        'USER': 'postgres',
+        'PASSWORD': '',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
+
+# Postgres (heroku)
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'OPTIONS': {
+#             'options': '-c search_path=xcandymin',
+#             'sslmode': 'require'
+#         },
+#         'NAME': 'dcntkafakmavsh',
+#         'USER': 'yeqtzgwwrjzgwz',
+#         'PASSWORD': '80476059c5b1b48e92a9579c8ab284eb72ca35f72355a5f152a6ec028c6929d7',
+#         'HOST': 'ec2-52-72-65-76.compute-1.amazonaws.com',
+#         'PORT': '5432',
+#     }
+# }
 
 # DATABASES = {}
 # DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
@@ -198,11 +197,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
 STATIC_ROOT = os.path.join(BASE_DIR,'static')
-
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'xcandyapp/static'),
 )
@@ -211,39 +207,39 @@ STATICFILES_DIRS = (
 # print("static url = ", STATIC_URL)
 
 # Auth0 settings
-SOCIAL_AUTH_TRAILING_SLASH = False  # Remove trailing slash from routes
-SOCIAL_AUTH_AUTH0_DOMAIN = 'dev-utjtfsx4.auth0.com'
-SOCIAL_AUTH_AUTH0_KEY = '8SY0HohBHyj0vMT0yHJ2j7gmjzACbL62'
-SOCIAL_AUTH_AUTH0_SECRET = 'DKBIoM8QlFOhzRWnJXSeMOeUtad1pi8xYLnSp1tt7qpzB5pM2khsi0a7nnR_uf1w'
-SOCIAL_AUTH_AUTH0_SCOPE = [
-    'openid',
-    'profile',
-    'email'
-]
-SOCIAL_AUTH_PIPELINE = (
-    'social_core.pipeline.social_auth.social_details',
-    'social_core.pipeline.social_auth.social_uid',
-    'social_core.pipeline.social_auth.auth_allowed',
-    'social_core.pipeline.social_auth.social_user',
-    'social_core.pipeline.user.get_username',
-    'social_core.pipeline.user.create_user',
-    'webapp.authentication.authorization.process_roles',
-    'social_core.pipeline.social_auth.associate_user',
-    'social_core.pipeline.social_auth.load_extra_data',
-    'social_core.pipeline.user.user_details',
-)
+# SOCIAL_AUTH_TRAILING_SLASH = False  # Remove trailing slash from routes
+# SOCIAL_AUTH_AUTH0_DOMAIN = 'dev-utjtfsx4.auth0.com'
+# SOCIAL_AUTH_AUTH0_KEY = '8SY0HohBHyj0vMT0yHJ2j7gmjzACbL62'
+# SOCIAL_AUTH_AUTH0_SECRET = 'DKBIoM8QlFOhzRWnJXSeMOeUtad1pi8xYLnSp1tt7qpzB5pM2khsi0a7nnR_uf1w'
+# SOCIAL_AUTH_AUTH0_SCOPE = [
+#     'openid',
+#     'profile',
+#     'email'
+# ]
+# SOCIAL_AUTH_PIPELINE = (
+#     'social_core.pipeline.social_auth.social_details',
+#     'social_core.pipeline.social_auth.social_uid',
+#     'social_core.pipeline.social_auth.auth_allowed',
+#     'social_core.pipeline.social_auth.social_user',
+#     'social_core.pipeline.user.get_username',
+#     'social_core.pipeline.user.create_user',
+#     'webapp.authentication.authorization.process_roles',
+#     'social_core.pipeline.social_auth.associate_user',
+#     'social_core.pipeline.social_auth.load_extra_data',
+#     'social_core.pipeline.user.user_details',
+# )
 
-AUTHENTICATION_BACKENDS = {
-    'webapp.authentication.auth0.Auth0',
-    'social_core.backends.github.GithubOAuth2',
-    'social_core.backends.twitter.TwitterOAuth',
-    'social_core.backends.facebook.FacebookOAuth2',
-    'django.contrib.auth.backends.ModelBackend'
-}
+# AUTHENTICATION_BACKENDS = {
+#     'webapp.authentication.auth0.Auth0',
+#     'social_core.backends.github.GithubOAuth2',
+#     'social_core.backends.twitter.TwitterOAuth',
+#     'social_core.backends.facebook.FacebookOAuth2',
+#     'django.contrib.auth.backends.ModelBackend'
+# }
 
-LOGIN_URL = '/login/auth0'
-LOGIN_REDIRECT_URL = '/home'
-LOGOUT_REDIRECT_URL = '/'
+# LOGIN_URL = '/login/auth0'
+# LOGIN_REDIRECT_URL = '/home'
+# LOGOUT_REDIRECT_URL = '/'
 
 # caching
 # CACHES = {
