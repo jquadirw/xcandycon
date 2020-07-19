@@ -585,6 +585,17 @@ form #input {
   border-radius: 0;
 }
 
+form .form-control {
+  height: 38px;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #d8d8d8;
+  margin: 8px 0;
+  -webkit-appearance: none;
+  border: 2px solid #d2d2d2;
+  border-radius: 0;
+}
+
 form #tnc {
   margin-right: 10px;
   height: 13px;
@@ -626,6 +637,19 @@ form button {
   font-size: 15px;
   height: 38px;
   margin-top: 10px;
+}
+
+.alert {
+  padding: .75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+}
+
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
 }
 
 .container-footer {

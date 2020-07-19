@@ -254,6 +254,7 @@ STATICFILES_DIRS = (
 # }
 # CACHE_TTL = 60 * 15
 
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 # Configure Django App for Heroku.
 django_heroku.settings(locals())

@@ -39,7 +39,7 @@
     <div class="container-banner">
       <div class="wrapper-banner">
         <div class="logo-container">
-          <div class="logo"><img src="{% static 'img/xcandylogo_b.png' %}" alt="">
+          <div class="logo"><a href="/"><img src="{% static 'img/xcandylogo_b.png' %}" alt=""></a>
             <p><a class="mhome" href="/home">xCandy.ai</a></p>
           </div>
           <div class="container-login-top-mobile">
@@ -69,17 +69,11 @@
           <a href="#">Sign in</a>
           <a href="#">Download</a>
         </div>
-        <form method="post" action="/register">
+        <form method="post" action="{% url 'register' %}">
           <h4>Sign up</h4>
           <p>or <a href="#"> sign in to your account</a></p>
-          <input type="text" name="firstname" id="input" placeholder="First Name">
-          <input type="text" name="lastname" id="input" placeholder="Last Name">
-          <input type="email" name="email" id="input" placeholder="Email">
-          <input type="password" name="password1" id="input" placeholder="Password">
-          <input type="password" name="password2" id="input" placeholder="Confirm Password">
-          <p>This page is subject to <a href="#">xCandy Privacy Policy</a> and <a href="#">Terms of Service</a></p>
-
-          <p><input type="checkbox" name="" id="tnc" checked>I agree to <a href="#">xCandy Terms</a></p>
+          {% csrf_token %}
+          {% include 'webapp/includes/bs4_form.html' with form=form %}
           <button type="submit" value="">Sign up</button>
         </form>
       </div>

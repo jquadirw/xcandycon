@@ -21,6 +21,7 @@ import pandas as pd
 import seaborn as sns
 import urllib, base64
 import io
+from django import forms
 
 from .models import Livedata
 from .models import Forecast
@@ -29,13 +30,16 @@ from .models import Glucose
 from .models import Recommended
 from .models import Activitylog
 
+from .forms import SignUpForm
+from .forms import SignInForm
+
 from django.core.cache import cache
 
 logger = logging.getLogger(__name__)
 
 def index(request):
-    context = {}
-    return render(request, 'webapp/index.html', context)
+    form = SignUpForm()
+    return render(request, 'webapp/index.html', {"form": form})
 
 def login(request):
     if request.user.is_authenticated:
@@ -60,16 +64,20 @@ def login(request):
 
 
 def register(request):
+    print("####### register method...")
     if request.method == "POST":
         form = SignUpForm(data=request.POST)
         if form.is_valid():
             user = form.save()
             user.refresh_from_db()
+
+            user.profile.username = form.cleaned_data.get("username")
             user.profile.email = form.cleaned_data.get("email")
-            user.profile.email = form.cleaned_data.get("password1")
-            user.profile.email = form.cleaned_data.get("password2")
-            user.profile.email = form.cleaned_data.get("poc")
-            user.profile.email = form.cleaned_data.get("url")
+            user.profile.password1 = form.cleaned_data.get("password1")
+            user.profile.password2 = form.cleaned_data.get("password2")
+            user.profile.first_name = form.cleaned_data.get("first_name")
+            user.profile.last_name = form.cleaned_data.get("last_name")
+            user.profile.accept = form.cleaned_data.get("accept")
             # user can't login until link confirmed
             user.is_active = False
             user.save()
@@ -91,7 +99,7 @@ def register(request):
             return redirect("activation_sent")
     else:
         form = SignUpForm()
-    return render(request, "webapp/register.html", {"form": form})
+    return render(request, "webapp/index.html", {"form": form})
 
 
 def activate(request, uidb64, token):
