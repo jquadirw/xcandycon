@@ -6,12 +6,26 @@ from django.core.exceptions import ValidationError
 
 from django.views.generic.base import View
 from bootstrap_modal_forms.generic import (BSModalReadView)
+from django.contrib.sites.shortcuts import get_current_site
 
 from django.contrib.auth import logout as django_logout
 from django.http import HttpResponse
 from django.http import JsonResponse
 from django.http import HttpResponseRedirect
+
+from django.contrib.auth import login as django_login, authenticate
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.sites.shortcuts import get_current_site
+from django.utils.encoding import force_text
+from django.contrib.auth.models import User
+from django.db import IntegrityError
+from django.utils.http import urlsafe_base64_decode
+from django.utils.encoding import force_bytes
+from django.utils.http import urlsafe_base64_encode
+from .tokens import account_activation_token
 from django.template.loader import render_to_string
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
 
 from bootstrap_modal_forms.generic import BSModalCreateView
 from django.urls import reverse_lazy
@@ -64,7 +78,6 @@ def login(request):
 
 
 def register(request):
-    print("####### register method...")
     if request.method == "POST":
         form = SignUpForm(data=request.POST)
         if form.is_valid():
@@ -91,12 +104,11 @@ def register(request):
                     "user": user,
                     "domain": current_site.domain,
                     "uid": urlsafe_base64_encode(force_bytes(user.pk)),
-                    # method will generate a hash value with user related data
                     "token": account_activation_token.make_token(user),
                 },
             )
             user.email_user(subject, message)
-            return redirect("activation_sent")
+            messages.success(request, "Sign up successful. A link has been sent to your email with further instructions.")
     else:
         form = SignUpForm()
     return render(request, "webapp/index.html", {"form": form})
@@ -208,10 +220,7 @@ def analytics(request):
 
 def logout(request):
     django_logout(request)
-    domain = 'dev-utjtfsx4.auth0.com'
-    client_id = '8SY0HohBHyj0vMT0yHJ2j7gmjzACbL62'
-    return_to = 'http://localhost:8000'
-    return HttpResponseRedirect(f'https://{domain}/v2/logout?client_id={client_id}&returnTo={return_to}')
+    return redirect("index")
 
 # Error Pages
 def not_found(request, exception, template_name="404.html"):
