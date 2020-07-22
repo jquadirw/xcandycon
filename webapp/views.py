@@ -55,6 +55,15 @@ def index(request):
     form = SignUpForm()
     return render(request, 'webapp/index.html', {"form": form})
 
+def ndx(request):
+    show = request.GET['s']
+    if show == 'login':
+        form = SignInForm()
+        msg = show
+    else:
+        form = SignUpForm()
+    return render(request, 'webapp/index.html', {"form": form, "msg": msg})
+
 def login(request):
     if request.user.is_authenticated:
         return redirect("home")
@@ -138,7 +147,8 @@ def activation_sent_view(request):
 @login_required
 def home(request):
     try:
-        livedata = Livedata.objects.latest('id')
+        profile = request.user.profile
+        livedata = profile.livedata.latest('id')
     except Livedata.DoesNotExist:
         livedata = None
 

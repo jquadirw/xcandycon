@@ -11,6 +11,7 @@ admin.site.login = login_required(admin.site.login)
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('index/', views.ndx, name='ndx'),
     path('', include('social_django.urls')),
     path('home/', views.home, name="home"),
     path("login/", views.login, name="login"),

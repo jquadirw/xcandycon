@@ -109,5 +109,11 @@ CREATE TABLE activitylog (
 	create_date date
 );
 
+CREATE TABLE userlivedata (
+	id serial PRIMARY KEY,
+	userid int references auth_user(id),
+	livedataid int references livedata(id)
+);
+
 
 

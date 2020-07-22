@@ -43,6 +43,7 @@
             <p><a class="mhome" href="/home">xCandy.ai</a></p>
           </div>
           <div class="container-login-top-mobile">
+            <p><a class="mhome" href="/home#access"><img style="width: 80%;height: 80%;margin-left: calc(100vw - 85vw) !important;" src="{% static 'img/home/scrolldown.png' %}" alt=""></a></p>
           </div>
         </div>
 
@@ -62,16 +63,30 @@
     <!-- Login -->
     <div class="container-login">
       <div class="wrapper-login">
-
         <div class="container-login-top">
         </div>
-        <form method="post" action="{% url 'register' %}">
-          <h4>Sign up</h4>
-          <p>or <a href="#"> sign in to your account</a></p>
+        {% if msg == 'login' %}
+
+        <form method="post" action="{% url 'login' %}">
+          <h4>Sign In</h4>
+          <p>or <a href="/"> Create a new account!</a></p>
           {% csrf_token %}
           {% include 'webapp/includes/bs4_form.html' with form=form %}
-          <button type="submit" value="">Sign up</button>
+          <button type="submit" value="">Access now!</button>
+          <p style="margin-top:10px;font-size: x-small; text-align:center"><a href="forgot/">Forgot password?</a></p>
         </form>
+
+        {% else %}
+
+        <form method="post" action="{% url 'register' %}">
+          <h4>Sign up</h4>
+          <p>or <a href="index?s=login"> Hey! I have an account!</a></p>
+          {% csrf_token %}
+          {% include 'webapp/includes/bs4_form.html' with form=form %}
+          <button type="submit" value="">Let's Get Started!</button>
+        </form>
+
+        {% endif %}
       </div>
     </div>
     <!-- Login -->
