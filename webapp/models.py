@@ -10,6 +10,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 import pandas as pd
+import datetime as dt
 
 class Accuracy(models.Model):
     since = models.DateTimeField()
@@ -259,8 +260,18 @@ class Livedata(models.Model):
 
     @property
     def timediff(self):
-        return (round(pd.to_numeric(((pd.to_datetime(self.create_date) - pd.to_datetime(self.since)).value/10**9/60))))
+        timediff = (round(pd.to_numeric(((dt.datetime.now() - pd.to_datetime(self.since)).value/10**9/60))))
+        timediffmsg =  '{:d} mins ago'.format(timediff)
+        if timediff > 59 and timediff < 1440:
+            timediff /= 60
+            timediff = (round(timediff))
+            timediffmsg =  '{:d} hours ago'.format(timediff)
+        elif timediff >= 1440:
+            timediff /= 1440
+            timediff = (round(timediff))
+            timediffmsg =  '{:d} days ago'.format(timediff)
 
+        return timediffmsg
 
 class Livestate(models.Model):
     name = models.CharField(max_length=30)

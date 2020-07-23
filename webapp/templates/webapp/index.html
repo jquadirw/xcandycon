@@ -43,7 +43,7 @@
             <p><a class="mhome" href="/home">xCandy.ai</a></p>
           </div>
           <div class="container-login-top-mobile">
-            <p><a class="mhome" href="/home#access"><img style="width: 80%;height: 80%;margin-left: calc(100vw - 85vw) !important;" src="{% static 'img/home/scrolldown.png' %}" alt=""></a></p>
+            <p><a class="mhome" href="#participate"><img style="width: 20%;height: 20%;margin-left: calc(100vw - 77vw) !important;" src="{% static 'img/home/scrolldown.png' %}" alt=""></a></p>
           </div>
         </div>
 
@@ -68,7 +68,7 @@
         {% if msg == 'login' %}
 
         <form method="post" action="{% url 'login' %}">
-          <h4>Sign In</h4>
+          <a name="participate"><h4>Sign In</h4></a>
           <p>or <a href="/"> Create a new account!</a></p>
           {% csrf_token %}
           {% include 'webapp/includes/bs4_form.html' with form=form %}
@@ -79,7 +79,7 @@
         {% else %}
 
         <form method="post" action="{% url 'register' %}">
-          <h4>Sign up</h4>
+          <a name="participate"><h4>Sign up</h4></a>
           <p>or <a href="index?s=login"> Hey! I have an account!</a></p>
           {% csrf_token %}
           {% include 'webapp/includes/bs4_form.html' with form=form %}

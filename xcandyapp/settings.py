@@ -82,6 +82,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'xcandyapp.wsgi.application'
 AUTH_PROFILE_MODULE = 'webapp.Profile'
+LOGIN_URL = '/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
