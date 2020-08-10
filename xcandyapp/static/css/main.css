@@ -193,8 +193,19 @@ ul .nav-left .ul-items-left ol .home {
   margin-bottom: -2px;
 }
 
+ul .nav-left .ul-items-left ol .active {
+  color: #333333;
+  border-bottom: 2px solid #333;
+  margin-bottom: -2px;
+}
+
 @media (max-width: 800px) {
   ul .nav-left .ul-items-left ol .home {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 0px;
+  }
+
+  ul .nav-left .ul-items-left ol .active {
     border-bottom: 1px solid #eee;
     margin-bottom: 0px;
   }
@@ -587,6 +598,17 @@ form #input {
 
 form .form-control {
   height: 38px;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #d8d8d8;
+  margin: 8px 0;
+  -webkit-appearance: none;
+  border: 2px solid #d2d2d2;
+  border-radius: 0;
+}
+
+form .form-control-dropdown {
+  height: 44px;
   padding: 10px;
   font-size: 16px;
   border: 2px solid #d8d8d8;

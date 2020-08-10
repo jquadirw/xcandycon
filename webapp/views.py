@@ -83,7 +83,7 @@ def login(request):
 
     # No context variables to pass to the template system, hence the
     # blank dictionary object...
-    return render(request, "webapp/login.html", {"form": form})
+    return render(request, "webapp/index.html", {"form": form})
 
 
 def register(request):

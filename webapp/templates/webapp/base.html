@@ -29,23 +29,23 @@
           <label for="menu-btn" class="menu-icon"><span class="navicon"></span></label>
           <ul class="ul-items-left">
 
-            <ol class="nl-item"><a class="home" href="/home">Home</a></ol>
-            <ol class="nl-item"><a href="/visualize">Visualize</a></ol>
-            <ol class="nl-item"><a href="/learn">Learn</a></ol>
-            <ol class="nl-item"><a href="/recipe">MyDiet</a></ol>
-            <ol class="nl-item"><a href="/help">Help</a></ol>
-            <ol class="nl-item nl-item-0"><a href="/settings">Settings</a></ol>
+            <ol class="nl-item"><a {% if 'home' in request.path %} class="active"{% endif %} href="/home">Home</a></ol>
+            <ol class="nl-item"><a {% if 'visualize' in request.path %} class="active"{% endif %} href="/visualize">Visualize</a></ol>
+            <ol class="nl-item"><a {% if 'learn' in request.path %} class="active"{% endif %} href="/learn">Learn</a></ol>
+            <ol class="nl-item"><a {% if 'recipe' in request.path %} class="active"{% endif %} href="/recipe">MyDiet</a></ol>
+            <ol class="nl-item"><a {% if 'help' in request.path %} class="active"{% endif %} href="/help">Help</a></ol>
+            <ol class="nl-item nl-item-0"><a {% if 'home' in request.path %} class="active"{% endif %} href="/settings">Settings</a></ol>
             {% if user.is_authenticated %}
-            <ol class="nl-item nl-item-0"><a href="/logout">Logout</a></ol>
+            <ol class="nl-item nl-item-0"><a {% if 'home' in request.path %} class="active"{% endif %} href="/logout">Logout</a></ol>
             {% endif %}
           </ul>
 
         </div>
 
         <div class="nav-right">
-          <div class="nr-item"><a href="/settings"><img src="{% static 'img/com/settings.svg' %}" alt=""></a></div>
+          <div class="nr-item"><a {% if 'settings' in request.path %} class="active"{% endif %} href="/settings"><img src="{% static 'img/com/settings.svg' %}" alt=""></a></div>
           {% if user.is_authenticated %}
-          <div class="nr-item"><a href="/logout"><img src="{% static 'img/com/logout.svg' %}" alt=""></a></div>
+          <div class="nr-item"><a {% if 'logout' in request.path %} class="active"{% endif %} href="/logout"><img src="{% static 'img/com/logout.svg' %}" alt=""></a></div>
           {% endif %}
         </div>
       </ul>
