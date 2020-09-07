@@ -97,35 +97,35 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 #}
 
 # PostgreSQL (local)
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'OPTIONS': {
-            'options': '-c search_path=xcandymin'
-        },
-        'NAME': 'xcandydb',
-        'USER': 'postgres',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
-
-# Postgres (heroku)
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
 #         'OPTIONS': {
-#             'options': '-c search_path=xcandymin',
-#             'sslmode': 'require'
+#             'options': '-c search_path=xcandymin'
 #         },
-#         'NAME': 'dcntkafakmavsh',
-#         'USER': 'yeqtzgwwrjzgwz',
-#         'PASSWORD': '80476059c5b1b48e92a9579c8ab284eb72ca35f72355a5f152a6ec028c6929d7',
-#         'HOST': 'ec2-52-72-65-76.compute-1.amazonaws.com',
+#         'NAME': 'xcandydb',
+#         'USER': 'postgres',
+#         'PASSWORD': '',
+#         'HOST': 'localhost',
 #         'PORT': '5432',
 #     }
 # }
+
+# Postgres (heroku)
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'OPTIONS': {
+            'options': '-c search_path=xcandy',
+            'sslmode': 'require'
+        },
+        'NAME': 'd2c2t76pqn4l3i',
+        'USER': 'cvmlgufsoczwfd',
+        'PASSWORD': 'bdbbac96a38a6437ebdc6e07e156e29a16f928593bb29bcc309cca912def6736',
+        'HOST': 'ec2-54-86-57-171.compute-1.amazonaws.com',
+        'PORT': '5432',
+    }
+}
 
 # DATABASES = {}
 # DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
@@ -137,33 +137,6 @@ DATABASES = {
 #         default=os.environ.get('DATABASE_URL')
 #     )
 # }
-
-# MySQL settings
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'xcandydb',
-#         'USER': 'xcandydb_owner',
-#         'PASSWORD': 'abcd.1234',
-#         'HOST': 'localhost',
-#         'PORT': '3306',
-#     }
-# }
-
-# Heroku MySQL
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'heroku_9887d068c78a589',
-#         'USER': 'ba75e39f324d83',
-#         'PASSWORD': '39d06b3f',
-#         'HOST': 'us-cdbr-east-05.cleardb.net',
-#         'PORT': '3306',
-#     }
-# }
-
-# Password validation
-# https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {

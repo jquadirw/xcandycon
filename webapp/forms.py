@@ -4,6 +4,11 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate
 
+from .functions import *
+from .models import Datasource
+from .models import Timezone
+from .models import Source
+
 class SignUpForm(UserCreationForm):
     username = forms.CharField(
         label="username", widget=forms.TextInput(attrs={"placeholder": "Username"}),
@@ -55,6 +60,43 @@ class SignUpForm(UserCreationForm):
             raise forms.ValidationError("You have to write something!")
 
 
+class AddlInfoForm(forms.Form):
+
+    source = forms.ModelChoiceField(queryset=Datasource.objects.all(), initial=0)
+    url = forms.CharField(
+        label="url",
+        widget=forms.TextInput(attrs={"placeholder": "Enter Nightscout URL (ex. https://<nightscout_name>.herokuapp.com)"}),
+    )
+    secret = forms.CharField(
+        label="secret",
+        widget=forms.TextInput(attrs={"placeholder": "Enter Nightscout API Secret"}),
+    )
+    location = forms.CharField(
+        label="location", widget=forms.TextInput(attrs={"placeholder": "Location (ex. Dubai)"}),
+    )
+    timezone = forms.ModelChoiceField(queryset=Timezone.objects.all(), initial=0)
+
+    class Meta:
+        model = Source
+        fields = (
+            "source",
+            "url",
+            "secret",
+            "location",
+            "timezone",
+        )
+
+    def clean(self):
+        cleaned_data = super(AddlInfoForm, self).clean()
+        source = cleaned_data.get("source")
+        url = cleaned_data.get("url")
+        secret = cleaned_data.get("secret")
+        location = cleaned_data.get("location")
+        timezone = cleaned_data.get("timezone")
+
+        if url is None or is_valid(url) == False:
+            raise forms.ValidationError("URL is invalid or does not exist!")
+        
 class SignInForm(forms.Form):
     username = forms.CharField(
         label="username", widget=forms.TextInput(attrs={"placeholder": "username"}),

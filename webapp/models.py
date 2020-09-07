@@ -11,6 +11,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 import pandas as pd
 import datetime as dt
+from django.core.validators import RegexValidator
 
 class Accuracy(models.Model):
     since = models.DateTimeField()
@@ -113,6 +114,41 @@ class AuthPermission(models.Model):
         unique_together = (('content_type', 'codename'),)
 
 
+class Datasource(models.Model):
+    name = models.CharField(max_length=10)
+    description = models.CharField(max_length=100)
+    enabled = models.BooleanField()
+
+    class Meta:
+        managed = False
+        db_table = 'datasource'
+
+class Timezone(models.Model):
+    name = models.CharField(max_length=120)
+    toffset = models.IntegerField()
+    enabled = models.BooleanField()
+
+    class Meta:
+        managed = False
+        db_table = 'timezone'
+
+
+class Source(models.Model):
+    type = models.ForeignKey(Datasource, models.DO_NOTHING)
+    url = models.URLField(max_length=255, null=True, blank=True, 
+                          validators=[RegexValidator(regex= '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/',
+                          message='Not a valid URL',)])
+    secret = models.CharField(max_length=255, null=True)
+    location = models.CharField(max_length=100)
+    timezone = models.ForeignKey(Timezone, models.DO_NOTHING)
+    username = models.CharField(max_length=100)
+    password = models.CharField(max_length=255)
+
+    class Meta:
+        managed = False
+        db_table = 'source'
+
+
 class AuthUser(models.Model):
     password = models.CharField(max_length=128)
     last_login = models.DateTimeField(blank=True, null=True)
@@ -124,11 +160,13 @@ class AuthUser(models.Model):
     is_staff = models.BooleanField()
     is_active = models.BooleanField()
     date_joined = models.DateTimeField()
+    dob = models.DateTimeField()
+    gender = models.CharField(max_length=1)
+    source = models.ForeignKey(Source, models.DO_NOTHING)
 
     class Meta:
         managed = False
         db_table = 'auth_user'
-
 
 class AuthUserGroups(models.Model):
     user = models.ForeignKey(AuthUser, models.DO_NOTHING)
@@ -250,8 +288,8 @@ class Glucose(models.Model):
 class Livedata(models.Model):
     since = models.DateTimeField()
     glucose = models.IntegerField()
-    state = models.ForeignKey('Livestate', models.DO_NOTHING, db_column='state', blank=True, null=True)
-    direction = models.ForeignKey(Direction, models.DO_NOTHING, db_column='direction', blank=True, null=True)
+    state = models.ForeignKey('Livestate', models.DO_NOTHING, db_column='state_id', blank=True, null=True)
+    direction = models.ForeignKey(Direction, models.DO_NOTHING, db_column='direction_id', blank=True, null=True)
     create_date = models.DateTimeField(blank=True, null=True)
 
     class Meta:
@@ -361,6 +399,7 @@ class Profile(models.Model):
     email = models.EmailField(max_length=150)
     accept = models.BooleanField(default=False)
     signup_confirmation = models.BooleanField(default=False)
+    source = models.ForeignKey(Source, db_column='source_id', on_delete=models.CASCADE)
     livedata = models.ManyToManyField(
         Livedata,
         related_name='profiles'
@@ -368,6 +407,12 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+    def has_source(self):
+        if self.source is not None:
+            return True
+        else:
+            return False
 
 @receiver(post_save, sender=User)
 def update_profile_signal(sender, instance, created, **kwargs):

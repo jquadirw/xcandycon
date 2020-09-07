@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 import json
 from django.contrib.auth.decorators import login_required
-from django.core.exceptions import ValidationError
+from django.forms import ValidationError
+from django.core.validators import URLValidator
 
 from django.views.generic.base import View
 from bootstrap_modal_forms.generic import (BSModalReadView)
@@ -26,6 +27,7 @@ from .tokens import account_activation_token
 from django.template.loader import render_to_string
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+import requests
 
 from bootstrap_modal_forms.generic import BSModalCreateView
 from django.urls import reverse_lazy
@@ -37,15 +39,13 @@ import urllib, base64
 import io
 from django import forms
 
-from .models import Livedata
-from .models import Forecast
-from .models import Accuracy
-from .models import Glucose
-from .models import Recommended
-from .models import Activitylog
+from .functions import *
+
+from .models import *
 
 from .forms import SignUpForm
 from .forms import SignInForm
+from .forms import AddlInfoForm
 
 from django.core.cache import cache
 
@@ -79,6 +79,11 @@ def login(request):
             # If the account is valid and active, we can log the user in.
             # We'll send the user back to the homepage.
             django_login(request, user)
+
+            print("profile has source = ", user.profile.has_source)
+            if user.profile.has_source == False:
+                redirect("addl_info")
+
             return redirect("home")
 
     # No context variables to pass to the template system, hence the
@@ -122,6 +127,30 @@ def register(request):
         form = SignUpForm()
     return render(request, "webapp/index.html", {"form": form})
 
+def addl_info(request):
+    if request.method == "POST":
+        sourceobj = Source()
+        typeid = request.POST["source"]
+        datasource = Datasource.objects.get(id=typeid)
+        sourceobj.type = datasource
+
+        sourceobj.url = request.POST["url"]
+        sourceobj.url += '/api/v1/entries?count=1'
+        sourceobj.secret = request.POST["secret"]
+        sourceobj.location = request.POST["location"]
+        timezoneid = request.POST["timezone"]
+
+        timezone = Timezone.objects.get(id=timezoneid)
+        sourceobj.timezone = timezone
+
+        request.user.profile.source = sourceobj
+        sourceobj.save()
+        request.user.profile.save()
+
+        return redirect("home")
+
+    return render(request, "webapp/signup/addl_info.html")
+
 
 def activate(request, uidb64, token):
     try:
@@ -137,7 +166,7 @@ def activate(request, uidb64, token):
         user.profile.signup_confirmation = True
         user.save()
         django_login(request, user)
-        return redirect("home")
+        return redirect("addl_info")
     else:
         return render(request, "webapp/includes/activation_invalid.html")
 
