@@ -287,6 +287,7 @@ class Glucose(models.Model):
 
 class Livedata(models.Model):
     since = models.DateTimeField()
+    sincemillis = models.BigIntegerField()
     glucose = models.IntegerField()
     state = models.ForeignKey('Livestate', models.DO_NOTHING, db_column='state_id', blank=True, null=True)
     direction = models.ForeignKey(Direction, models.DO_NOTHING, db_column='direction_id', blank=True, null=True)

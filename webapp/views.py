@@ -135,7 +135,7 @@ def addl_info(request):
         sourceobj.type = datasource
 
         sourceobj.url = request.POST["url"]
-        sourceobj.url += '/api/v1/entries?count=1'
+        sourceobj.url += '/api/v1/entries?count=10000&find[date][$gt]='
         sourceobj.secret = request.POST["secret"]
         sourceobj.location = request.POST["location"]
         timezoneid = request.POST["timezone"]
