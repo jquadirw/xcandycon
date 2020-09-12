@@ -299,7 +299,7 @@ class Livedata(models.Model):
 
     @property
     def timediff(self):
-        timediff = (round(pd.to_numeric(((dt.datetime.now() - pd.to_datetime(self.since)).value/10**9/60))))
+        timediff = (round(pd.to_numeric(((dt.datetime.utcnow() - pd.to_datetime(self.since)).value/10**9/60))))
         timediffmsg =  '{:d} mins ago'.format(timediff)
         if timediff > 59 and timediff < 1440:
             timediff /= 60
