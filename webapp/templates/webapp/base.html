@@ -43,6 +43,9 @@
         </div>
 
         <div class="nav-right">
+          {% if user.is_authenticated %}
+          <div class="nr-item">Hey {{ user.profile.first_name }}</div>
+          {% endif %}
           <div class="nr-item"><a {% if 'settings' in request.path %} class="active"{% endif %} href="/settings"><img src="{% static 'img/com/settings.svg' %}" alt=""></a></div>
           {% if user.is_authenticated %}
           <div class="nr-item"><a {% if 'logout' in request.path %} class="active"{% endif %} href="/logout"><img src="{% static 'img/com/logout.svg' %}" alt=""></a></div>
