@@ -38,7 +38,7 @@ import seaborn as sns
 import urllib, base64
 import io
 from django import forms
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from .functions import *
 
