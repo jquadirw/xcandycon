@@ -38,6 +38,7 @@ import seaborn as sns
 import urllib, base64
 import io
 from django import forms
+from datetime import datetime
 
 from .functions import *
 
@@ -175,8 +176,8 @@ def activation_sent_view(request):
 
 @login_required
 def home(request):
+    profile = request.user.profile
     try:
-        profile = request.user.profile
         livedata = profile.livedata.latest('id')
     except Livedata.DoesNotExist:
         livedata = None
@@ -197,6 +198,8 @@ def home(request):
         recommended = None
 
     try:
+        gdata = profile.livedata.filter(and_(livedata.since <= datetime.utcnow(), livedata.since >= datetime.utcnow()))
+        print("######## gdata = ", gdata)
         glucose = Glucose.objects.latest('id')
     except Glucose.DoesNotExist:
         glucose = None
