@@ -198,7 +198,11 @@ def home(request):
         recommended = None
 
     try:
-        gdata = profile.livedata.filter(and_(livedata.since <= datetime.utcnow(), livedata.since >= datetime.utcnow()))
+        time_24_hours_ago = datetime.utcnow() - timedelta(days=1)
+        gdata = profile.livedata.filter(
+            since__gte=time_24_hours_ago
+        )
+        # gdata = profile.livedata.filter(livedata.since.between(datetime.utcnow(), datetime.utcnow-1))
         print("######## gdata = ", gdata)
         glucose = Glucose.objects.latest('id')
     except Glucose.DoesNotExist:
