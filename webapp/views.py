@@ -186,7 +186,14 @@ def home(request):
     try:
         time_24_hours_ago = datetime.utcnow() - timedelta(days=1)
         gdata = profile.livedata.filter(since__gte=time_24_hours_ago).aggregate(Avg('glucose'))
-        print("######## gdata = ", gdata)
+        profile.livedata.annotate(
+            numEvents=Count(
+                'livedata__id', 
+                filter=Q(livedata__glucose__lt=70), 
+                distinct=True
+            )
+        )
+        print("######## gdata = ", gdata, ", numEvents = ", numEvents)
         glucose = Glucose.objects.latest('id')
     except Glucose.DoesNotExist:
         glucose = None
