@@ -163,8 +163,9 @@ def activation_sent_view(request):
 @login_required
 def home(request):
     profile = request.user.profile
+    profilelivedata = profile.livedata
     try:
-        livedata = profile.livedata.latest('id')
+        livedata = profilelivedata.latest('id')
     except Livedata.DoesNotExist:
         livedata = None
 
@@ -185,11 +186,11 @@ def home(request):
 
     try:
         time_24_hours_ago = datetime.utcnow() - timedelta(days=1)
-        gdata = profile.livedata.filter(since__gte=time_24_hours_ago).aggregate(Avg('glucose'))
-        profile.livedata.annotate(
+        gdata = profilelivedata.filter(since__gte=time_24_hours_ago).aggregate(Avg('glucose'))
+        profilelivedata.objects.annotate(
             numEvents=Count(
-                'livedata__id', 
-                filter=Q(livedata__glucose__lt=70), 
+                'id', 
+                filter=Q(glucose__lt=70), 
                 distinct=True
             )
         )
