@@ -39,7 +39,6 @@ import urllib, base64
 import io
 from django import forms
 from datetime import datetime, timedelta
-from sqlalchemy.sql import func
 from django.db.models import Avg
 
 from .functions import *
