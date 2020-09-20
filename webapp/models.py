@@ -324,6 +324,22 @@ class Glucose(models.Model):
         managed = False
         db_table = 'glucose'
 
+class Livestate(models.Model):
+    name = models.CharField(max_length=30)
+    description = models.CharField(max_length=60, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'livestate'
+
+    def __repr__(self):
+        return (
+            "<Livestate(name='%s', description='%s')>"
+            % (
+                self.name,
+                self.description,
+            )
+        )
 
 class Livedata(models.Model):
     since = models.DateTimeField()
@@ -364,24 +380,6 @@ class Livedata(models.Model):
                 self.create_date,
             )
         )
-
-class Livestate(models.Model):
-    name = models.CharField(max_length=30)
-    description = models.CharField(max_length=60, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'livestate'
-
-    def __repr__(self):
-        return (
-            "<Livestate(name='%s', description='%s')>"
-            % (
-                self.name,
-                self.description,
-            )
-        )
-
 
 class Recommended(models.Model):
     since = models.DateTimeField()
