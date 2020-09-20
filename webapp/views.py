@@ -24,7 +24,7 @@ import urllib, base64
 import io
 from django import forms
 from datetime import datetime, timedelta
-from django.db.models import Avg
+from django.db.models import Avg, Count, Q
 
 from .functions import *
 
