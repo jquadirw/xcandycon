@@ -1,37 +1,22 @@
-from django.shortcuts import render
-from django.shortcuts import get_object_or_404
 import json
 from django.contrib.auth.decorators import login_required
-from django.forms import ValidationError
-from django.core.validators import URLValidator
 
 from django.views.generic.base import View
-from bootstrap_modal_forms.generic import (BSModalReadView)
-from django.contrib.sites.shortcuts import get_current_site
-
 from django.contrib.auth import logout as django_logout
 from django.http import HttpResponse
-from django.http import JsonResponse
-from django.http import HttpResponseRedirect
 
 from django.contrib.auth import login as django_login, authenticate
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_text
 from django.contrib.auth.models import User
-from django.db import IntegrityError
 from django.utils.http import urlsafe_base64_decode
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 from .tokens import account_activation_token
 from django.template.loader import render_to_string
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 import requests
-
-from bootstrap_modal_forms.generic import BSModalCreateView
-from django.urls import reverse_lazy
-
 import logging
 import pandas as pd
 import seaborn as sns
@@ -200,11 +185,7 @@ def home(request):
 
     try:
         time_24_hours_ago = datetime.utcnow() - timedelta(days=1)
-        gdata = profile.livedata.filter(
-            since__gte=time_24_hours_ago
-        )
         gdata = profile.livedata.filter(since__gte=time_24_hours_ago).aggregate(Avg('glucose'))
-        # gdata = profile.livedata.filter(livedata.since.between(datetime.utcnow(), datetime.utcnow-1))
         print("######## gdata = ", gdata)
         glucose = Glucose.objects.latest('id')
     except Glucose.DoesNotExist:
