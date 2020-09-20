@@ -39,6 +39,8 @@ import urllib, base64
 import io
 from django import forms
 from datetime import datetime, timedelta
+from sqlalchemy.sql import func
+from django.db.models import Avg
 
 from .functions import *
 
@@ -202,6 +204,7 @@ def home(request):
         gdata = profile.livedata.filter(
             since__gte=time_24_hours_ago
         )
+        gdata = profile.livedata.filter(since__gte=time_24_hours_ago).aggregate(Avg('glucose'))
         # gdata = profile.livedata.filter(livedata.since.between(datetime.utcnow(), datetime.utcnow-1))
         print("######## gdata = ", gdata)
         glucose = Glucose.objects.latest('id')

@@ -24,6 +24,18 @@ class Accuracy(models.Model):
         managed = False
         db_table = 'accuracy'
 
+    def __repr__(self):
+        return (
+            "<Accuracy(since='%s', interval='%s', interval_unit='%s', percent='%s', create_date='%s')>"
+            % (
+                self.since,
+                self.interval,
+                self.interval_unit,
+                self.percent,
+                self.create_date,
+            )
+        )
+
 
 class Accuracylevel(models.Model):
     name = models.CharField(max_length=30)
@@ -33,6 +45,14 @@ class Accuracylevel(models.Model):
         managed = False
         db_table = 'accuracylevel'
 
+    def __repr__(self):
+        return (
+            "<Accuracylevel(name='%s', description='%s')>"
+            % (
+                self.name,
+                self.description,
+            )
+        )
 
 class Accuracystate(models.Model):
     name = models.CharField(max_length=30)
@@ -45,6 +65,17 @@ class Accuracystate(models.Model):
         managed = False
         db_table = 'accuracystate'
 
+    def __repr__(self):
+        return (
+            "<Accuracystate(name='%s', description='%s', low='%s', high='%s', level='%s')>"
+            % (
+                self.name,
+                self.description,
+                self.low,
+                self.high,
+                self.level,
+            )
+        )
 
 class Activitylog(models.Model):
     since = models.DateTimeField()
@@ -196,6 +227,15 @@ class Direction(models.Model):
         managed = False
         db_table = 'direction'
 
+    def __repr__(self):
+        return (
+            "<Direction(name='%s', description='%s')>"
+            % (
+                self.name,
+                self.description,
+            )
+        )
+
 
 class DjangoAdminLog(models.Model):
     action_time = models.DateTimeField()
@@ -289,7 +329,7 @@ class Livedata(models.Model):
     since = models.DateTimeField()
     sincemillis = models.BigIntegerField()
     glucose = models.IntegerField()
-    state = models.ForeignKey('Livestate', models.DO_NOTHING, db_column='state_id', blank=True, null=True)
+    state = models.ForeignKey(Livestate, models.DO_NOTHING, db_column='state_id', blank=True, null=True)
     direction = models.ForeignKey(Direction, models.DO_NOTHING, db_column='direction_id', blank=True, null=True)
     create_date = models.DateTimeField(blank=True, null=True)
 
@@ -312,6 +352,19 @@ class Livedata(models.Model):
 
         return timediffmsg
 
+    def __repr__(self):
+        return (
+            "<Livedata(since='%s', sincemillis='%s', glucose='%s', state='%s', direction='%s', create_date='%s')>"
+            % (
+                self.since,
+                self.sincemillis,
+                self.glucose,
+                self.state,
+                self.direction,
+                self.create_date,
+            )
+        )
+
 class Livestate(models.Model):
     name = models.CharField(max_length=30)
     description = models.CharField(max_length=60, blank=True, null=True)
@@ -319,6 +372,15 @@ class Livestate(models.Model):
     class Meta:
         managed = False
         db_table = 'livestate'
+
+    def __repr__(self):
+        return (
+            "<Livestate(name='%s', description='%s')>"
+            % (
+                self.name,
+                self.description,
+            )
+        )
 
 
 class Recommended(models.Model):
