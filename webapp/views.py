@@ -191,7 +191,7 @@ def home(request):
         profilelivedata.annotate(
             numEvents=Count(
                 'id', 
-                filter=Q(glucose__lt=70), 
+                filter=Q(glucose__lt=100), 
                 distinct=True
             )
         )
