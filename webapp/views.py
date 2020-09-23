@@ -193,8 +193,8 @@ def home(request):
                 'id', 
                 filter=Q(livedata__glucose__lt=100), 
                 distinct=True
-            ).all()
-        )
+            )
+        ).all()
         for ld in ps:
             print ("#######", ld.id, ld.glucose)
         print("######## gdata = ", gdata, ", numEvents = ", numEvents)
