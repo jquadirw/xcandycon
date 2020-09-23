@@ -195,9 +195,9 @@ def home(request):
                 distinct=True
             )
         ).all()
-        numEvents = hypos.length
+        numEvents = len(hypos)
         print("######## gdata = ", gdata, ", numEvents = ", numEvents)
-        glucose = Glucose.objects.latest('id')
+        glucose = Glucose(since=24, value=gdata, num_events=numEvents)
     except Glucose.DoesNotExist:
         glucose = None
 
