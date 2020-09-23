@@ -188,7 +188,7 @@ def home(request):
         time_24_hours_ago = datetime.utcnow() - timedelta(days=1)
         gdata = profilelivedata.filter(since__gte=time_24_hours_ago).aggregate(Avg('glucose'))
         numEvents = 0
-        ps = profilelivedata.objects.annotate(numEvents=Count('id')).all()
+        ps = profilelivedata.annotate(numEvents=Count('id')).all()
         for ld in ps:
             print ("#######", ld.id, ld.glucose)
         # profilelivedata.annotate(
