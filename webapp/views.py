@@ -189,13 +189,14 @@ def home(request):
         print("time_24_hours_ago = ", time_24_hours_ago)
         gdata = profilelivedata.filter(since__gte=time_24_hours_ago).aggregate(Avg('glucose'))
         numEvents = 0
-        hypos = profilelivedata.annotate(
-            numEvents=Count(
-                'id', 
-                filter=Q(glucose__lt=70), 
-                distinct=True
-            )
-        ).all()
+        hypos = profilelivedata.annotate(numEvents=Count('livedata', filter=Q(glucose__lt=70)))
+        # hypos = profilelivedata.annotate(
+        #     numEvents=Count(
+        #         'id', 
+        #         filter=Q(glucose__lt=70), 
+        #         distinct=True
+        #     )
+        # ).all()
         numEvents = len(hypos)
         print("######## gdata = ", gdata, ", numEvents = ", numEvents)
         glucose = Glucose(since=24, value=gdata, num_events=numEvents)
