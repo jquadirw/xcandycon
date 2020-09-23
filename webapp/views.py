@@ -196,8 +196,6 @@ def home(request):
                 distinct=True
             )
         ).all()
-        for hypo in hypos:
-            print("#########", hypo.since, hypo.glucose)
         numEvents = len(hypos)
         print("######## gdata = ", gdata, ", numEvents = ", numEvents)
         glucose = Glucose(since=24, value=gdata, num_events=numEvents)
