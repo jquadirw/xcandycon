@@ -198,7 +198,7 @@ def home(request):
         #         distinct=True
         #     )
         # ).all()
-        numEvents = len(hypos)
+        # numEvents = len(hypos)
         print("######## gdata = ", gdata, ", numEvents = ", numEvents)
         glucose = Glucose(since=24, value=gdata, num_events=numEvents)
     except Glucose.DoesNotExist:
