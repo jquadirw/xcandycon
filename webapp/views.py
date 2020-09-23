@@ -199,7 +199,7 @@ def home(request):
         #     )
         # ).all()
         # numEvents = hypos.id__count
-        glucose = Glucose(since=24, value=gdata.glucose__avg, num_events=hypos.id__count)
+        glucose = Glucose(since=24, value=gdata['glucose__avg'], num_events=hypos['id__count'])
     except Glucose.DoesNotExist:
         glucose = None
 
