@@ -185,19 +185,23 @@ def home(request):
         recommended = None
 
     try:
-        time_24_hours_ago = datetime.utcnow() - timedelta(days=1)
-        gdata = profilelivedata.filter(since__gte=time_24_hours_ago).aggregate(Avg('glucose'))
         numEvents = 0
         prevId = 0
-        # hypos = profilelivedata.filter(since__gte=time_24_hours_ago).filter(glucose__lt=100).aggregate(Count('id'))
-        hypos = profilelivedata.filter(since__gte=time_24_hours_ago).filter(glucose__lt=100).all()
+        duration = 7
+        if duration == 1:
+            time_day_hours_ago = datetime.utcnow() - timedelta(days=duration)
+            gdata = profilelivedata.filter(since__gte=time_day_hours_ago).aggregate(Avg('glucose'))
+            hypos = profilelivedata.filter(since__gte=time_day_hours_ago).filter(glucose__lt=100).all()
+        else:
+            time_week_hours_ago = datetime.utcnow() - timedelta(days=duration)
+            gdata = profilelivedata.filter(since__gte=time_week_hours_ago).aggregate(Avg('glucose'))
+            hypos = profilelivedata.filter(since__gte=time_week_hours_ago).filter(glucose__lt=100).all()
+
         for hypo in hypos:
             if hypo.id != prevId + 1:
                 numEvents += 1
             prevId = hypo.id
 
-        print("########## avg glucose = ", gdata['glucose__avg'], ", numEvents = ", numEvents)
-        # glucose = Glucose(since=24, value=gdata['glucose__avg'], num_events=hypos['id__count'])
         glucose = Glucose(since=24, value=gdata['glucose__avg'], num_events=numEvents)
     except Glucose.DoesNotExist:
         glucose = None
