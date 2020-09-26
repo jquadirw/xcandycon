@@ -192,7 +192,7 @@ def home(request):
         # hypos = profilelivedata.filter(since__gte=time_24_hours_ago).filter(glucose__lt=100).aggregate(Count('id'))
         hypos = profilelivedata.filter(since__gte=time_24_hours_ago).filter(glucose__lt=100).all()
         for hypo in hypos:
-            if hypo.id != prevId:
+            if hypo.id != prevId + 1:
                 numEvents += 1
             prevId = hypo.id
 
