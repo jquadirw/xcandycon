@@ -187,7 +187,7 @@ def home(request):
     try:
         numEvents = 0
         prevId = 0
-        duration = 7
+        duration = 1
         if duration == 1:
             time_day_hours_ago = datetime.utcnow() - timedelta(days=duration)
             gdata = profilelivedata.filter(since__gte=time_day_hours_ago).aggregate(Avg('glucose'))
