@@ -179,6 +179,20 @@ class Source(models.Model):
         managed = False
         db_table = 'source'
 
+class Preferences(models.Model):
+    glucose_low_limit = models.IntegerField()
+    glucose_high_limit = models.IntegerField()
+    mode = models.IntegerField()
+    very_high_alarm = models.BooleanField()
+    high_alarm = models.BooleanField()
+    low_alarm = models.BooleanField()
+    very_low_alarm = models.BooleanField()
+    units = models.CharField(max_length=20)
+
+    class Meta:
+        managed = False
+        db_table = 'prefs'
+
 
 class AuthUser(models.Model):
     password = models.CharField(max_length=128)
@@ -461,6 +475,7 @@ class Profile(models.Model):
     accept = models.BooleanField(default=False)
     signup_confirmation = models.BooleanField(default=False)
     source = models.ForeignKey(Source, db_column='source_id', on_delete=models.CASCADE)
+    prefs = models.ForeignKey(Preferences, db_column='prefs_id', on_delete=models.CASCADE)
     livedata = models.ManyToManyField(
         Livedata,
         related_name='profiles'
