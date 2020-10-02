@@ -210,13 +210,13 @@
                   </div>
                   <div class="form-group">
                     <label for="username">Blood Glucose High Limit</label>
-                    <input type="text" readonly class="form-control" id="glucoseHighLimit" aria-describedby="glucoseHighLimitHelp" placeholder="example: 80" value="{{ user.profile.prefs.glucose_low_limit }}">
+                    <input type="text" readonly class="form-control" id="glucoseHighLimit" aria-describedby="glucoseHighLimitHelp" placeholder="example: 140" value="{{ user.profile.prefs.glucose_high_limit }}">
                     <small id="glucoseHighLimitHelp" class="form-text text-muted">This value is used to estimate within the range. If not set, defaults to 140 mg/dL.</small>
                   </div>
                   <div class="form-group">
                     <label for="username">Dark Mode</label>
                     <div class="custom-control custom-control-nolabel custom-switch ml-auto">
-                      <input type="checkbox" class="custom-control-input" id="customSwitch1" checked="">
+                      <input type="checkbox" class="custom-control-input" id="customSwitch1" checked="false">
                       <label class="custom-control-label" for="customSwitch1"></label>
                     </div>
                   </div>
