@@ -191,11 +191,11 @@ def home(request):
         if duration == 1:
             time_day_hours_ago = datetime.utcnow() - timedelta(days=duration)
             gdata = profilelivedata.filter(since__gte=time_day_hours_ago).aggregate(Avg('glucose'))
-            hypos = profilelivedata.filter(since__gte=time_day_hours_ago).filter(glucose__lt=100).all()
+            hypos = profilelivedata.filter(since__gte=time_day_hours_ago).filter(glucose__lt=profile.prefs.glucose_low_limit).all()
         else:
             time_week_hours_ago = datetime.utcnow() - timedelta(days=duration)
             gdata = profilelivedata.filter(since__gte=time_week_hours_ago).aggregate(Avg('glucose'))
-            hypos = profilelivedata.filter(since__gte=time_week_hours_ago).filter(glucose__lt=100).all()
+            hypos = profilelivedata.filter(since__gte=time_week_hours_ago).filter(glucose__lt=profile.prefs.glucose_low_limit).all()
 
         for hypo in hypos:
             if hypo.id != prevId + 1:
