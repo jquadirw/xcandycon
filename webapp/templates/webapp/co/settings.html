@@ -204,9 +204,21 @@
                 <hr>
                 <form>
                   <div class="form-group">
-                    <label for="username">Blood Glucose Lower Limit</label>
-                    <input type="text" readonly class="form-control" id="glucoseLowerLimit" aria-describedby="glucoseLowerLimitHelp" placeholder="example: 80" value="{{ user.profile.prefs.glucose_low_limit }}">
-                    <small id="glucoseLowerLimitHelp" class="form-text text-muted">This value is used to count hypo events. If not set, defaults to 80 mg/dL.</small>
+                    <label for="username">Blood Glucose Low Limit</label>
+                    <input type="text" readonly class="form-control" id="glucoseLowLimit" aria-describedby="glucoseLowLimitHelp" placeholder="example: 80" value="{{ user.profile.prefs.glucose_low_limit }}">
+                    <small id="glucoseLowLimitHelp" class="form-text text-muted">This value is used to count hypo events. If not set, defaults to 80 mg/dL.</small>
+                  </div>
+                  <div class="form-group">
+                    <label for="username">Blood Glucose High Limit</label>
+                    <input type="text" readonly class="form-control" id="glucoseHighLimit" aria-describedby="glucoseHighLimitHelp" placeholder="example: 80" value="{{ user.profile.prefs.glucose_low_limit }}">
+                    <small id="glucoseHighLimitHelp" class="form-text text-muted">This value is used to estimate within the range. If not set, defaults to 140 mg/dL.</small>
+                  </div>
+                  <div class="form-group">
+                    <label for="username">Dark Mode</label>
+                    <div class="custom-control custom-control-nolabel custom-switch ml-auto">
+                      <input type="checkbox" class="custom-control-input" id="customSwitch1" checked="">
+                      <label class="custom-control-label" for="customSwitch1"></label>
+                    </div>
                   </div>
                   <button class="btn btn-secondary" type="button">Save Changes</button>
                   <hr>
