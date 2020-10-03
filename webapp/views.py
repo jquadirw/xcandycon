@@ -188,14 +188,23 @@ def home(request):
         numEvents = 0
         prevId = 0
         duration = 1
+
+        glucose_low_limit = profile.prefs.glucose_low_limit
+        if glucose_low_limit is None or 0:
+            glucose_low_limit = 80
+
+        glucose_high_limit = profile.prefs.glucose_high_limit
+        if glucose_high_limit is None or 0:
+            glucose_high_limit = 140
+
         if duration == 1:
             time_day_hours_ago = datetime.utcnow() - timedelta(days=duration)
             gdata = profilelivedata.filter(since__gte=time_day_hours_ago).aggregate(Avg('glucose'))
-            hypos = profilelivedata.filter(since__gte=time_day_hours_ago).filter(glucose__lt=profile.prefs.glucose_low_limit).all()
+            hypos = profilelivedata.filter(since__gte=time_day_hours_ago).filter(glucose__lt=glucose_low_limit).all()
         else:
             time_week_hours_ago = datetime.utcnow() - timedelta(days=duration)
             gdata = profilelivedata.filter(since__gte=time_week_hours_ago).aggregate(Avg('glucose'))
-            hypos = profilelivedata.filter(since__gte=time_week_hours_ago).filter(glucose__lt=profile.prefs.glucose_low_limit).all()
+            hypos = profilelivedata.filter(since__gte=time_week_hours_ago).filter(glucose__lt=profile.glucose_low_limit).all()
 
         for hypo in hypos:
             if hypo.id != prevId + 1:
