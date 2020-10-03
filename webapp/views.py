@@ -248,6 +248,13 @@ def profile(request):
 @login_required
 def preferences(request):
     if request.method == "POST":
+        print("######### mode = ", request.POST["mode"])
+        print("######### gll = ", request.POST["gll"])
+        print("######### ghl = ", request.POST["ghl"])
+        print("######### vha = ", request.POST["vha"])
+        print("######### ha = ", request.POST["ha"])
+        print("######### la = ", request.POST["la"])
+        print("######### vla = ", request.POST["vla"])
         # sourceobj = Source()
         # typeid = request.POST["source"]
         # datasource = Datasource.objects.get(id=typeid)
