@@ -268,7 +268,7 @@ def preferences(request):
         # sourceobj.save()
         # request.user.profile.save()
 
-        return HttpResponse(json.dumps({'message': "Saved your changes..."}))
+        return HttpResponse({"message": "Saved your changes...")
 
 @login_required
 def data(request):
