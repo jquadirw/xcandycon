@@ -3,6 +3,7 @@ $('#prefsForm').submit(function (e) {
         alert('data = ' + data);
         alert('data.msg = ' + data.message);
         alert('data[msg] = ' + data['message']);
+        alert('data[0][msg] = ' + data[0]['message']);
         $('.message').html(data.message);
     });
     e.preventDefault();
