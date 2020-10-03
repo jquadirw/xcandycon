@@ -246,6 +246,32 @@ def profile(request):
     })
 
 @login_required
+def preferences(request):
+    if request.method == "POST":
+        # sourceobj = Source()
+        # typeid = request.POST["source"]
+        # datasource = Datasource.objects.get(id=typeid)
+        # sourceobj.type = datasource
+
+        # sourceobj.url = request.POST["url"]
+        # sourceobj.url += '/api/v1/entries?count=10000&find[date][$gt]='
+        # sourceobj.secret = request.POST["secret"]
+        # sourceobj.location = request.POST["location"]
+        # timezoneid = request.POST["timezone"]
+
+        # timezone = Timezone.objects.get(id=timezoneid)
+        # sourceobj.timezone = timezone
+
+        # request.user.profile.source = sourceobj
+        # sourceobj.save()
+        # request.user.profile.save()
+
+        context = {
+            "message": "Saved your changes..."
+        }
+        return render(request, "webapp/signup/addl_info.html", json.dumps(context))
+
+@login_required
 def data(request):
     return render(request, 'webapp/dq/home.html')
 

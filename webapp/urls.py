@@ -26,4 +26,5 @@ urlpatterns = [
     path('learn/', views.learn),
     path('help/', views.help),
     path('settings/', views.settings),
+    path('settings/preferences/', views.preferences, name="preferences"),
 ]

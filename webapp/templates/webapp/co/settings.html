@@ -202,7 +202,9 @@
               <div class="tab-pane" id="preferences">
                 <h6>PREFERENCES</h6>
                 <hr>
-                <form>
+                <div class="message"></div>
+                <form id="prefsForm" action="" method="post">
+                  {% csrf_token %}
                   <div class="form-group">
                     <label for="username">Blood Glucose Low Limit</label>
                     <input type=number min=40 max=100 step=5 name="gll" class="form-control" id="glucoseLowLimit" aria-describedby="glucoseLowLimitHelp" placeholder="example: 80" value="{{ user.profile.prefs.glucose_low_limit }}">
@@ -357,6 +359,6 @@
 <script src="{% static 'js/jquery.min.js' %}" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script> 
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
+<script src="{% static 'js/settings/settings.js' %}" type="text/javascript"></script>
 
 {% endblock %}
