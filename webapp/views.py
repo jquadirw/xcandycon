@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 
 from django.views.generic.base import View
 from django.contrib.auth import logout as django_logout
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 
 from django.contrib.auth import login as django_login, authenticate
 from django.shortcuts import render, redirect, get_object_or_404
@@ -268,7 +268,8 @@ def preferences(request):
         # sourceobj.save()
         # request.user.profile.save()
 
-        return HttpResponse(json.dumps({'message': 'Saved your changes...'}))
+        # return HttpResponse(json.dumps({'message': 'Saved your changes...'}))
+        return JsonResponse({'message':'Saved your changes'})
 
 @login_required
 def data(request):
