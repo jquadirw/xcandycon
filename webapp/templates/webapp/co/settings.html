@@ -202,7 +202,6 @@
               <div class="tab-pane" id="preferences">
                 <h6>PREFERENCES</h6>
                 <hr>
-                <div class="message">Edit and save your preferences</div>
                 <form id="prefsForm" action="" method="post">
                   {% csrf_token %}
                   <div class="form-group">
@@ -273,6 +272,7 @@
                     </div>
                   </div>
                   <input class="btn btn-secondary" type="submit" value="Save Changes"/>
+                  <div class="message"></div>
                   <hr>
                 </form>
               </div>              
