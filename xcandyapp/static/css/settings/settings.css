@@ -149,7 +149,7 @@ input:checked+.slider:before {
   color: #a1a1a1;
 }
 
-.slider-right {
+.slider-left {
   -webkit-transform: rotate(0deg);
   transform: rotate(0deg);
   position: absolute;
@@ -159,7 +159,7 @@ input:checked+.slider:before {
   color: #a1a1a1;
 }
 
-.slider-left {
+.slider-right {
   -webkit-transform: rotate(0deg);
   transform: rotate(0deg);
   position: absolute;
