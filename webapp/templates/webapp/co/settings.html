@@ -205,12 +205,12 @@
                 <form>
                   <div class="form-group">
                     <label for="username">Blood Glucose Low Limit</label>
-                    <input type="text" readonly class="form-control" id="glucoseLowLimit" aria-describedby="glucoseLowLimitHelp" placeholder="example: 80" value="{{ user.profile.prefs.glucose_low_limit }}">
+                    <input type="text" class="form-control" id="glucoseLowLimit" aria-describedby="glucoseLowLimitHelp" placeholder="example: 80" value="{{ user.profile.prefs.glucose_low_limit }}">
                     <small id="glucoseLowLimitHelp" class="form-text text-muted">This value is used to count hypo events. If not set, defaults to 80 mg/dL.</small>
                   </div>
                   <div class="form-group">
                     <label for="username">Blood Glucose High Limit</label>
-                    <input type="text" readonly class="form-control" id="glucoseHighLimit" aria-describedby="glucoseHighLimitHelp" placeholder="example: 140" value="{{ user.profile.prefs.glucose_high_limit }}">
+                    <input type="text" class="form-control" id="glucoseHighLimit" aria-describedby="glucoseHighLimitHelp" placeholder="example: 140" value="{{ user.profile.prefs.glucose_high_limit }}">
                     <small id="glucoseHighLimitHelp" class="form-text text-muted">This value is used to estimate within the range. If not set, defaults to 140 mg/dL.</small>
                   </div>
                   <div class="form-group">
@@ -218,6 +218,18 @@
                     <div class="custom-control custom-control-nolabel custom-switch ml-auto">
                       <input type="checkbox" class="custom-control-input" id="customSwitch1" checked="checked">
                       <label class="custom-control-label" for="customSwitch1"></label>
+
+
+
+                      <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                        <div class="slider-top">On</div>
+                        <div class="slider-btm">Off</div>
+                      </label>
+
+
+
                     </div>
                   </div>
                   <h6>ALARMS</h6>
