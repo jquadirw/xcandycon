@@ -168,3 +168,13 @@ input:checked+.slider:before {
   font-size: 14px;
   color: #a1a1a1;
 }
+
+.message {
+  text-align: center;
+  color: #3c763d;
+  font-size: small;
+  padding: .75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+}
