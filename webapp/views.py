@@ -269,7 +269,7 @@ def preferences(request):
         # request.user.profile.save()
 
         # return HttpResponse(json.dumps({'message': 'Saved your changes...'}))
-        return JsonResponse({'message':'Saved your changes'})
+        return JsonResponse({'message':'Your preferences have been saved'})
 
 @login_required
 def data(request):
