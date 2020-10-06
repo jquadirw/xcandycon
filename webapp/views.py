@@ -249,11 +249,15 @@ def profile(request):
 def preferences(request):
     if request.method == "POST":
         preferences = request.user.profile.prefs
+        value = 0
         for key in request.POST.keys():
-            if request.POST[key] == "on":
+            keyval = request.POST[key]
+            if keyval == "on":
                 value = 1
-            elif request.POST[key] == "off":
+            elif keyval == "off":
                 value = 0
+            else:
+                value = keyval
             preferences[key] = value
 
         preferences.save()
