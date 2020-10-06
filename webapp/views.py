@@ -258,7 +258,7 @@ def preferences(request):
                 value = 0
             else:
                 value = keyval
-            preferences[key] = value
+            setattr(my_model, key, value)
 
         preferences.save()
         request.user.profile.save()
