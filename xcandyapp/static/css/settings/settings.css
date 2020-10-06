@@ -171,7 +171,7 @@ input:checked+.slider:before {
 
 .message {
   text-align: center;
-  color: #3c763d;
+  color: #007bff;
   font-size: small;
   padding: .75rem 1.25rem;
   margin-bottom: 1rem;
