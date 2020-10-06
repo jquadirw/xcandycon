@@ -218,7 +218,7 @@
                     <label for="mode">Dark Mode</label>
                     <div class="custom-control custom-control-nolabel custom-switch ml-auto">
                       <label class="switch">
-                        <input type="checkbox" name="mode" checked="{{ user.profile.prefs.mode }}">
+                        <input type="checkbox" name="mode" {% if user.profile.prefs.mode %} checked {% endif %}>
                         <span class="slider round"></span>
                         <div class="slider-left">Off</div>
                         <div class="slider-right">On</div>

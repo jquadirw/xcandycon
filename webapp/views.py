@@ -253,16 +253,15 @@ def preferences(request):
         except Preferences.DoesNotExist:
             preferences = Preferences()
 
-        value = 0
+        value = False
         for key in request.POST.keys():
             keyval = request.POST[key]
             if keyval == "on":
-                value = 1
+                value = True
             elif keyval == "off":
-                value = 0
+                value = False
             else:
                 value = keyval
-            print("###### key = ", key, ", keyval = ", keyval, ", value = ", value)
             setattr(preferences, key, value)
 
         request.user.profile.prefs = preferences
