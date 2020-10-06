@@ -182,7 +182,7 @@ class Source(models.Model):
 class Preferences(models.Model):
     glucose_low_limit = models.IntegerField()
     glucose_high_limit = models.IntegerField()
-    mode = models.IntegerField()
+    mode = models.BooleanField()
     very_high_alarm = models.BooleanField()
     high_alarm = models.BooleanField()
     low_alarm = models.BooleanField()
