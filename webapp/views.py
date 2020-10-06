@@ -248,10 +248,11 @@ def profile(request):
 @login_required
 def preferences(request):
     if request.method == "POST":
-        preferences = request.user.profile.prefs
-        if preferences is None:
+        try:
+            preferences = request.user.profile.prefs
+        except Preferences.DoesNotExist:
             preferences = Preferences()
-            
+
         value = 0
         for key in request.POST.keys():
             keyval = request.POST[key]
