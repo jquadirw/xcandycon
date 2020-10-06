@@ -265,28 +265,10 @@ def preferences(request):
             print("###### key = ", key, ", keyval = ", keyval, ", value = ", value)
             setattr(preferences, key, value)
 
+        request.user.profile.prefs = preferences
         preferences.save()
         request.user.profile.save()
 
-        # sourceobj = Source()
-        # typeid = request.POST["source"]
-        # datasource = Datasource.objects.get(id=typeid)
-        # sourceobj.type = datasource
-
-        # sourceobj.url = request.POST["url"]
-        # sourceobj.url += '/api/v1/entries?count=10000&find[date][$gt]='
-        # sourceobj.secret = request.POST["secret"]
-        # sourceobj.location = request.POST["location"]
-        # timezoneid = request.POST["timezone"]
-
-        # timezone = Timezone.objects.get(id=timezoneid)
-        # sourceobj.timezone = timezone
-
-        # request.user.profile.source = sourceobj
-        # sourceobj.save()
-        # request.user.profile.save()
-
-        # return HttpResponse(json.dumps({'message': 'Saved your changes...'}))
         return JsonResponse({'message':'Your preferences have been saved'})
 
 @login_required
