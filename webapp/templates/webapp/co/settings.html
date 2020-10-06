@@ -231,7 +231,7 @@
                     <label for="very_high_alarm">Very High Alarm</label>
                     <div class="custom-control custom-control-nolabel custom-switch ml-auto">
                       <label class="switch">
-                        <input type="checkbox" name="very_high_alarm">
+                        <input type="checkbox" name="very_high_alarm" {% if user.profile.prefs.very_high_alarm %} checked {% endif %}>
                         <span class="slider round"></span>
                         <div class="slider-left">Off</div>
                         <div class="slider-right">On</div>
@@ -242,7 +242,7 @@
                     <label for="high_alarm">High Alarm</label>
                     <div class="custom-control custom-control-nolabel custom-switch ml-auto">
                       <label class="switch">
-                        <input type="checkbox" name="high_alarm">
+                        <input type="checkbox" name="high_alarm" {% if user.profile.prefs.high_alarm %} checked {% endif %}>
                         <span class="slider round"></span>
                         <div class="slider-left">Off</div>
                         <div class="slider-right">On</div>
@@ -253,7 +253,7 @@
                     <label for="low_alarm">Low Alarm</label>
                     <div class="custom-control custom-control-nolabel custom-switch ml-auto">
                       <label class="switch">
-                        <input type="checkbox" name="low_alarm">
+                        <input type="checkbox" name="low_alarm" {% if user.profile.prefs.low_alarm %} checked {% endif %}>
                         <span class="slider round"></span>
                         <div class="slider-left">Off</div>
                         <div class="slider-right">On</div>
@@ -264,7 +264,7 @@
                     <label for="very_low_alarm">Very Low Alarm</label>
                     <div class="custom-control custom-control-nolabel custom-switch ml-auto">
                       <label class="switch">
-                        <input type="checkbox" name="very_low_alarm">
+                        <input type="checkbox" name="very_low_alarm" {% if user.profile.prefs.very_low_alarm %} checked {% endif %}>
                         <span class="slider round"></span>
                         <div class="slider-left">Off</div>
                         <div class="slider-right">On</div>
