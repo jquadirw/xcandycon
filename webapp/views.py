@@ -249,6 +249,9 @@ def profile(request):
 def preferences(request):
     if request.method == "POST":
         preferences = request.user.profile.prefs
+        if preferences is None:
+            preferences = Preferences()
+            
         value = 0
         for key in request.POST.keys():
             keyval = request.POST[key]
