@@ -258,6 +258,7 @@ def preferences(request):
                 value = 0
             else:
                 value = keyval
+            print("###### key = ", key, ", keyval = ", keyval, ", value = ", value)
             setattr(preferences, key, value)
 
         preferences.save()
