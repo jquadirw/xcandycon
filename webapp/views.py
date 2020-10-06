@@ -249,9 +249,16 @@ def profile(request):
 def preferences(request):
     if request.method == "POST":
         preferences = request.user.profile.prefs
-        print("##### prefs = ", preferences)
         for key in request.POST.keys():
-            print("######### key = ", key, ", value = ", request.POST[key])
+            if request.POST[key] == "on":
+                value = 1
+            elif request.POST[key] == "off":
+                value = 0
+            preferences[key] = value
+
+        preferences.save()
+        request.user.profile.save()
+
         # sourceobj = Source()
         # typeid = request.POST["source"]
         # datasource = Datasource.objects.get(id=typeid)
