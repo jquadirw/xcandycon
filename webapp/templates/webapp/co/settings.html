@@ -206,12 +206,12 @@
                   {% csrf_token %}
                   <div class="form-group">
                     <label for="username">Blood Glucose Low Limit</label>
-                    <input type=number min=40 max=100 step=5 name="gll" class="form-control" id="glucoseLowLimit" aria-describedby="glucoseLowLimitHelp" placeholder="example: 80" value="{{ user.profile.prefs.glucose_low_limit }}">
+                    <input type=number min=40 max=100 step=5 name="glucose_low_limit" class="form-control" id="glucoseLowLimit" aria-describedby="glucoseLowLimitHelp" placeholder="example: 80" value="{{ user.profile.prefs.glucose_low_limit }}">
                     <small id="glucoseLowLimitHelp" class="form-text text-muted">This value is used to count hypo events. If not set, defaults to 80 mg/dL.</small>
                   </div>
                   <div class="form-group">
                     <label for="username">Blood Glucose High Limit</label>
-                    <input type=number min=100 max=300 step=5 name="ghl" class="form-control" id="glucoseHighLimit" aria-describedby="glucoseHighLimitHelp" placeholder="example: 140" value="{{ user.profile.prefs.glucose_high_limit }}">
+                    <input type=number min=100 max=300 step=5 name="glucose_high_limit" class="form-control" id="glucoseHighLimit" aria-describedby="glucoseHighLimitHelp" placeholder="example: 140" value="{{ user.profile.prefs.glucose_high_limit }}">
                     <small id="glucoseHighLimitHelp" class="form-text text-muted">This value is used to estimate within the range. If not set, defaults to 140 mg/dL.</small>
                   </div>
                   <div class="form-group">
@@ -231,7 +231,7 @@
                     <label for="username">Very High Alarm</label>
                     <div class="custom-control custom-control-nolabel custom-switch ml-auto">
                       <label class="switch">
-                        <input type="checkbox" name="vha">
+                        <input type="checkbox" name="very_high_alarm">
                         <span class="slider round"></span>
                         <div class="slider-left">Off</div>
                         <div class="slider-right">On</div>
@@ -242,7 +242,7 @@
                     <label for="username">High Alarm</label>
                     <div class="custom-control custom-control-nolabel custom-switch ml-auto">
                       <label class="switch">
-                        <input type="checkbox" name="ha">
+                        <input type="checkbox" name="high_alarm">
                         <span class="slider round"></span>
                         <div class="slider-left">Off</div>
                         <div class="slider-right">On</div>
@@ -253,7 +253,7 @@
                     <label for="username">Low Alarm</label>
                     <div class="custom-control custom-control-nolabel custom-switch ml-auto">
                       <label class="switch">
-                        <input type="checkbox" name="la">
+                        <input type="checkbox" name="low_alarm">
                         <span class="slider round"></span>
                         <div class="slider-left">Off</div>
                         <div class="slider-right">On</div>
@@ -264,7 +264,7 @@
                     <label for="username">Very Low Alarm</label>
                     <div class="custom-control custom-control-nolabel custom-switch ml-auto">
                       <label class="switch">
-                        <input type="checkbox" name="vla">
+                        <input type="checkbox" name="very_low_alarm">
                         <span class="slider round"></span>
                         <div class="slider-left">Off</div>
                         <div class="slider-right">On</div>

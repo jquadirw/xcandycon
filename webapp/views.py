@@ -248,6 +248,7 @@ def profile(request):
 @login_required
 def preferences(request):
     if request.method == "POST":
+        preferences = request.user.profile.prefs
         for key in request.POST.keys():
             print("######### key = ", key, ", value = ", request.POST[key])
         # sourceobj = Source()
