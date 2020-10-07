@@ -82,7 +82,30 @@
       </div>
       <!-- Item 3 -->
       <!-- Item 4 -->
-      {% include "webapp/home/tile_glucose.html" with glucose=glucose only %}
+      <div class="c1-item c1-item4-container">
+        <div class="c1-item4">
+          <h6>Average Glucose</h6>
+          <div class="data-big">
+            <h4>{{ glucose_value|stringformat:"03d" }} <span class="db-unit" class="unit">mg/dl</span></h4>
+          </div>
+          <div class="bar">
+            <div class="home-hp-value"></div>
+              <p class="hp-title"><a
+                  style="color: #5c5c5c; text-decoration: none; background: #ffffff; margin-left: 20px; padding: 0px 4px; border-radius: 2px;"
+                  href="#">{{ num_events|stringformat:"02d" }}</a> HYPO EVENTS
+              </p>
+            </div>
+
+            <!-- Rounded switch -->
+            <label class="switch">
+              <input type="checkbox" name="period">
+              <span class="slider round"></span>
+              <div class="slider-top">24hr</div>
+              <div class="slider-btm">Week</div>
+            </label>
+            <!-- Rounded switch end -->
+        </div>
+      </div>      
       <!-- Item 4 -->
       <!-- Item 5 -->
       <div class="c1-item c1-item5-container">
