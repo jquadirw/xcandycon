@@ -655,6 +655,7 @@ form ::placeholder {
 form button {
   border: none;
   background: #2d85c3;
+  border-radius: 5px;
   color: #f2f2f2;
   font-size: 15px;
   height: 38px;

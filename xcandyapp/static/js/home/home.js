@@ -7,11 +7,9 @@ Chart.defaults.global.defaultFontColor = "#555";
 Chart.defaults.scale.gridLines.display = false;
 
 var popData = {
-  datasets: [
-    {
+  datasets: [{
       label: ["BG 1"],
-      data: [
-        {
+      data: [{
           x: 7,
           y: 110,
           r: 5
@@ -49,8 +47,7 @@ var popData = {
     },
     {
       label: ["BG 2"],
-      data: [
-        {
+      data: [{
           x: 7,
           y: 110 - 50,
           r: 5
@@ -87,8 +84,7 @@ var popData = {
     },
     {
       label: ["BG 3"],
-      data: [
-        {
+      data: [{
           x: 7,
           y: 110 - 100,
           r: 5
@@ -125,8 +121,7 @@ var popData = {
     },
     {
       label: ["BG 4"],
-      data: [
-        {
+      data: [{
           x: 7,
           // y: 110 - 150,
           r: 5
@@ -172,22 +167,25 @@ var bubbleChart = new Chart(popCanvas_vis, {
       display: false
     },
     scales: {
-      xAxes: [
-        {
-          gridLines: {
-            display: false,
-            drawBorder: false
-          }
-        }
-      ],
-      yAxes: [
-        {
+      xAxes: [{
+        gridLines: {
           display: false,
-          gridLines: {
-            drawBorder: false
-          }
+          drawBorder: false
         }
-      ]
+      }],
+      yAxes: [{
+        display: false,
+        gridLines: {
+          drawBorder: false
+        }
+      }]
     }
   }
+});
+
+$('#prefsForm').submit(function (e) {
+  $.post('/settings/preferences/', $(this).serialize(), function (data) {
+    $('.message').html(data.message);
+  });
+  e.preventDefault();
 });

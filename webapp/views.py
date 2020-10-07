@@ -271,6 +271,13 @@ def preferences(request):
         return JsonResponse({'message':'Your preferences have been saved'})
 
 @login_required
+def period(request):
+    if request.method == "POST":
+        for key in request.POST.keys():
+            print("key = ", key)
+
+
+@login_required
 def data(request):
     return render(request, 'webapp/dq/home.html')
 

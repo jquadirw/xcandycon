@@ -14,6 +14,7 @@ urlpatterns = [
     path('index/', views.ndx, name='ndx'),
     path('', include('social_django.urls')),
     path('home/', views.home, name="home"),
+    path('home/period/', views.period, name="period"),
     path('addl_info/', views.addl_info, name="addl_info"),
     path("login/", views.login, name="login"),
     path('profile/', views.profile),
