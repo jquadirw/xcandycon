@@ -1,0 +1,17 @@
+      <div class="c1-item c1-item5-container">
+        <div class="c1-item5">
+          <h6>Forecast Accuracy</h6>
+          <div class="data-big">
+            {% for accuracy in accuracies %}
+              <div><span class="duration">{{accuracy.interval}}{{accuracy.interval_unit}}</span> <span class="measure">{{accuracy.percent}}</span> <span>%</span> </div>
+            {% endfor %}
+          </div>
+          <div class="bar">
+            <div class="learn-value"></div>
+            <p class="hp-title"> Learned<a
+                style="color: #5c5c5c; text-decoration: none; background: #fff; margin-left: 20px; padding: 0px 4px; border-radius: 2px; color:#333;"
+                href="#">50%</a>
+            </p>
+          </div>
+        </div>
+      </div>

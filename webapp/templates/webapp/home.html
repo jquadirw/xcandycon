@@ -11,110 +11,22 @@
   <div class="container-1">
     <div class="c1-wrapper">
       <!-- Item 1 -->
-      <div class="c1-item c1-item1-container">
-        <div class="c1-item1">
-          {% if livedata.state.id == 1 %}
-            <h6>Live data ({{ livedata.timediff }})</h6>
-          {% elif livedata.state.id == 2 %}
-            <h6>Last data ({{ livedata.timediff }})</h6>
-          {% endif %}
-          <div class="data-big">
-            <h4>{{ livedata.glucose|stringformat:"03d" }} <span class="db-unit" class="unit">mg/dl</span></h4>
-            {% if livedata.direction.id == 1 or livedata.direction.id == 2 %}
-              <img class="north" src="{% static 'img/com/arrow.svg' %}" alt="">
-            {% elif livedata.direction.id == 3 or livedata.direction.id == 4 %}
-              <img class="south" src="{% static 'img/com/arrow.svg' %}" alt="">
-            {% elif livedata.direction.id == 5 %}
-              <img class="northeast" src="{% static 'img/com/arrow.svg' %}" alt="">
-            {% elif livedata.direction.id == 6 %}
-              <img class="southeast" src="{% static 'img/com/arrow.svg' %}" alt="">
-            {% elif livedata.direction.id == 7 %}
-              <img class="east" src="{% static 'img/com/arrow.svg' %}" alt="">
-            {% endif %}
-          </div>
-          {% if livedata.state.id == 1 %}
-            <p>{{ livedata.state.name }}</p>
-          {% elif livedata.state.id == 2 %}
-            <p class="offline">{{ livedata.state.name }}</p>
-          {% endif %}
-        </div>
-      </div>
+      {% include "webapp/home/tile_glucose.html" with livedata=livedata %}
       <!-- Item 1 -->
       <!-- Item 2 -->
-      <div class="c1-item c1-item2-container">
-        <div class="c1-item2">
-          <h6>Forecast</h6>
-          <div class="data-big">
-            {% for forecast in forecasts %}
-              <div><span class="duration">{{forecast.interval}}{{forecast.interval_unit}}</span> <span class="measure">{{forecast.value}}</span> <span class="unit">mg/dl</span></div>
-            {% endfor %}
-          </div>
-          <div class="bar">
-            <div class="hp-value"></div>
-            <p class="hp-title"> HYPOGLYCEMIA<a
-                style="color: #5c5c5c; text-decoration: none; background: #ffff00; margin-left: 20px; padding: 0px 4px; border-radius: 2px;"
-                href="#">LOW</a>
-            </p>
-          </div>
-        </div>
-      </div>
+      {% include "webapp/home/tile_forecast.html" %}
       <!-- Item 2 -->
       <!-- Item 3 -->
-      <div class="c1-item c1-item3-container">
-        <div class="c1-item3">
-          <h6>Recommended Activity Now</h6>
-          <div class="data-item3">
-            <div class="data1-item3">Exercise</div>
-            <div class="data2-item3">Eat</div>
-            <div class="data3-item3">
-              <span class="item3-1">Low</span>
-              <span class="item3-2">GI</span>
-              <span class="item3-3">10-40</span>
-            </div>
-            <div class="data4-item3">Insulin</div>
-            <div class="data5-item3">Rest</div>
-          </div>
-          <div class="p-item3">
-            <p class="p1-item3">COOK</p>
-            <p class="p2-item3">EAT OUT</p>
-          </div>
-        </div>
-      </div>
+      {% include "webapp/home/tile_recommended_activity.html" %}
       <!-- Item 3 -->
       <!-- Item 4 -->
       {% include "webapp/home/tile_glucose.html" with glucose=glucose %}
       <!-- Item 4 -->
       <!-- Item 5 -->
-      <div class="c1-item c1-item5-container">
-        <div class="c1-item5">
-          <h6>Forecast Accuracy</h6>
-          <div class="data-big">
-            {% for accuracy in accuracies %}
-              <div><span class="duration">{{accuracy.interval}}{{accuracy.interval_unit}}</span> <span class="measure">{{accuracy.percent}}</span> <span>%</span> </div>
-            {% endfor %}
-          </div>
-          <div class="bar">
-            <div class="learn-value"></div>
-            <p class="hp-title"> Learned<a
-                style="color: #5c5c5c; text-decoration: none; background: #fff; margin-left: 20px; padding: 0px 4px; border-radius: 2px; color:#333;"
-                href="#">50%</a>
-            </p>
-          </div>
-        </div>
-      </div>
+      {% include "webapp/home/tile_glucose.html" with accuracy=accuracy %}
       <!-- Item 5 -->
       <!-- Item 6 -->
-      <div class="c1-item c1-item6-container">
-        <div class="c1-item6">
-          <h6>Today's Activity Log</h6>
-          <div class="data-big">
-            <div class="graph">
-              <canvas id="popChart_vis"></canvas>
-            </div>
-          </div>
-          <p>CONNECTED</p>
-        </div>
-      </div>
+      {% include "webapp/home/tile_activity_log.html" %}
       <!-- Item 6 -->
     </div>
   </div>

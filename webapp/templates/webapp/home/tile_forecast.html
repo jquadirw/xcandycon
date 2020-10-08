@@ -1,0 +1,17 @@
+      <div class="c1-item c1-item2-container">
+        <div class="c1-item2">
+          <h6>Forecast</h6>
+          <div class="data-big">
+            {% for forecast in forecasts %}
+              <div><span class="duration">{{forecast.interval}}{{forecast.interval_unit}}</span> <span class="measure">{{forecast.value}}</span> <span class="unit">mg/dl</span></div>
+            {% endfor %}
+          </div>
+          <div class="bar">
+            <div class="hp-value"></div>
+            <p class="hp-title"> HYPOGLYCEMIA<a
+                style="color: #5c5c5c; text-decoration: none; background: #ffff00; margin-left: 20px; padding: 0px 4px; border-radius: 2px;"
+                href="#">LOW</a>
+            </p>
+          </div>
+        </div>
+      </div>
