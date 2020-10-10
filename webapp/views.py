@@ -246,8 +246,8 @@ def refresh_glucose(request):
     print("######### in refresh glucose....")
     print("period = ", request.GET["period"])
     profile = request.user.profile
-    glucose = glucose(profile, period)
-    return JsonResponse({'glucose': glucose})
+    refreshed = glucose(profile, period)
+    return JsonResponse({'glucose': refreshed})
 
 @login_required
 def data(request):
