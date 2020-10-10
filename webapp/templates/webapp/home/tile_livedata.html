@@ -1,29 +1,29 @@
 {% load static %}
-      <div class="c1-item c1-item1-container">
-        <div class="c1-item1">
-          {% if livedata.state.id == 1 %}
-            <h6>Live data ({{ livedata.timediff }})</h6>
-          {% elif livedata.state.id == 2 %}
-            <h6>Last data ({{ livedata.timediff }})</h6>
-          {% endif %}
-          <div class="data-big">
-            <h4>{{ livedata.glucose|stringformat:"03d" }} <span class="db-unit" class="unit">mg/dl</span></h4>
-            {% if livedata.direction.id == 1 or livedata.direction.id == 2 %}
-              <img class="north" src="{% static 'img/com/arrow.svg' %}" alt="">
-            {% elif livedata.direction.id == 3 or livedata.direction.id == 4 %}
-              <img class="south" src="{% static 'img/com/arrow.svg' %}" alt="">
-            {% elif livedata.direction.id == 5 %}
-              <img class="northeast" src="{% static 'img/com/arrow.svg' %}" alt="">
-            {% elif livedata.direction.id == 6 %}
-              <img class="southeast" src="{% static 'img/com/arrow.svg' %}" alt="">
-            {% elif livedata.direction.id == 7 %}
-              <img class="east" src="{% static 'img/com/arrow.svg' %}" alt="">
-            {% endif %}
-          </div>
-          {% if livedata.state.id == 1 %}
-            <p>{{ livedata.state.name }}</p>
-          {% elif livedata.state.id == 2 %}
-            <p class="offline">{{ livedata.state.name }}</p>
-          {% endif %}
-        </div>
-      </div>
+<div class="c1-item c1-item1-container">
+  <div class="c1-item1">
+    {% if livedata.state.id == 1 %}
+    <h6>Live data ({{ livedata.timediff }})</h6>
+    {% elif livedata.state.id == 2 %}
+    <h6>Last data ({{ livedata.timediff }})</h6>
+    {% endif %}
+    <div class="data-big">
+      <h4>{{ livedata.glucose|stringformat:"03d" }} <span class="db-unit" class="unit">mg/dl</span></h4>
+      {% if livedata.direction.id == 1 or livedata.direction.id == 2 %}
+      <img class="north" src="{% static 'img/com/arrow.svg' %}" alt="">
+      {% elif livedata.direction.id == 3 or livedata.direction.id == 4 %}
+      <img class="south" src="{% static 'img/com/arrow.svg' %}" alt="">
+      {% elif livedata.direction.id == 5 %}
+      <img class="northeast" src="{% static 'img/com/arrow.svg' %}" alt="">
+      {% elif livedata.direction.id == 6 %}
+      <img class="southeast" src="{% static 'img/com/arrow.svg' %}" alt="">
+      {% elif livedata.direction.id == 7 %}
+      <img class="east" src="{% static 'img/com/arrow.svg' %}" alt="">
+      {% endif %}
+    </div>
+    {% if livedata.state.id == 1 %}
+    <p>{{ livedata.state.name }}</p>
+    {% elif livedata.state.id == 2 %}
+    <p class="offline">{{ livedata.state.name }}</p>
+    {% endif %}
+  </div>
+</div>
