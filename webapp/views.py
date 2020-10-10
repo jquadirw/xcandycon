@@ -243,7 +243,7 @@ def preferences(request):
 
 @login_required
 def refresh_glucose(request):
-    period = request.GET["period"]
+    period = int(request.GET["period"])
     profile = request.user.profile
     refreshed = glucose(profile, period)
     return JsonResponse({'glucose': refreshed})
