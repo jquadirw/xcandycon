@@ -184,12 +184,12 @@ var bubbleChart = new Chart(popCanvas_vis, {
 });
 
 $('#period').click(function () {
-  alert("in change method");
   if (this.checked) {
-    period = 1;
-  } else {
     period = 7;
+  } else {
+    period = 1;
   }
+  alert('period = ' + period);
   new Ajax.Request('/home/glucose/', {
     method: 'post',
     parameters: $H({
