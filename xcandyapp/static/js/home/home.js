@@ -194,7 +194,6 @@ $('#period').click(function () {
     data: {
       'period': period
     },
-    dataType: 'json',
     success: function (data) {
       alert('success');
     }
