@@ -174,7 +174,7 @@ def home(request):
     except Forecast.DoesNotExist:
         forecasts = None
 
-    g = glucose(profile, profilelivedata, 1); 
+    g = glucose(profile, profilelivedata, 1)
 
     try:
         accuracies = Accuracy.objects.all().order_by('-id')[:2][::-1]
@@ -245,7 +245,9 @@ def preferences(request):
 def refresh_glucose(request):
     print("######### in refresh glucose....")
     print("period = ", request.GET["period"])
-    return JsonResponse({'message':'Your preferences have been saved'})
+    profile = request.user.profile
+    glucose = glucose(profile, period)
+    return JsonResponse({'glucose': glucose})
 
 @login_required
 def data(request):
