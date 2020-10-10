@@ -182,3 +182,13 @@ var bubbleChart = new Chart(popCanvas_vis, {
     }
   }
 });
+
+$(document).ready(function () {
+  $('#period').change(function () {
+    if (this.checked) {
+      alert("24 hour period");
+    } else {
+      alert("week period");
+    }
+  });
+});
