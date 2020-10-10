@@ -190,16 +190,14 @@ $('#period').click(function () {
     period = 1;
   }
   alert('period = ' + period);
-  new Ajax.Request('/home/glucose/', {
-    method: 'post',
-    parameters: $H({
+  $.ajax({
+    url: '/home/glucose/',
+    data: {
       'period': period
-    }),
-    onSuccess: function (transport) {
+    },
+    dataType: 'json',
+    success: function (data) {
       alert('success');
-      // var e = $('id_color')
-      // if (transport.responseText)
-      //   e.update(transport.responseText)
     }
   });
 });
