@@ -21,12 +21,10 @@ def is_valid(url):
      return valid
 
 def glucose(profile, period):
-     if profile is None or profile.livedata is None:
-          return None
-     return glucose(profile, profile.livedata, period)
-
-def glucose(profile, profilelivedata, period):
      try:
+          if profile is not None:
+               profilelivedata = profile.livedata
+
           numEvents = 0
           prevId = 0
 

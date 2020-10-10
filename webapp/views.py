@@ -174,7 +174,7 @@ def home(request):
     except Forecast.DoesNotExist:
         forecasts = None
 
-    g = glucose(profile, profilelivedata, 1)
+    avg_glucose = glucose(profile, 1)
 
     try:
         accuracies = Accuracy.objects.all().order_by('-id')[:2][::-1]
@@ -195,7 +195,7 @@ def home(request):
                 'livedata': livedata, 
                 'forecasts': forecasts, 
                 'accuracies': accuracies, 
-                'glucose': g, 
+                'glucose': avg_glucose, 
                 'activitylog': activitylog, 
                 'recommended': recommended
                }
