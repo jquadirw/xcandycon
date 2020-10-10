@@ -243,8 +243,7 @@ def preferences(request):
 
 @login_required
 def refresh_glucose(request):
-    print("######### in refresh glucose....")
-    print("period = ", request.GET["period"])
+    period = request.GET["period"]
     profile = request.user.profile
     refreshed = glucose(profile, period)
     return JsonResponse({'glucose': refreshed})

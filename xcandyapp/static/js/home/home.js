@@ -189,7 +189,6 @@ $('#period').click(function () {
   } else {
     period = 1;
   }
-  alert('period = ' + period);
   $.ajax({
     url: '/home/glucose/',
     data: {
