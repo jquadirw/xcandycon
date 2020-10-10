@@ -242,7 +242,8 @@ def preferences(request):
         return JsonResponse({'message':'Your preferences have been saved'})
 
 @login_required
-def refresh_glucose(request, period):
+def refresh_glucose(request):
+    print("######### in refresh glucose....")
     if request.method == "POST":
         for key in request.POST.keys():
             print("key = ", key)
