@@ -3,7 +3,7 @@ import logging
 from django.core.validators import URLValidator
 from django.core.cache import cache
 
-from models import Glucose
+from .models import Glucose
 
 logger = logging.getLogger(__name__)
 
