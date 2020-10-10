@@ -183,11 +183,11 @@ var bubbleChart = new Chart(popCanvas_vis, {
   }
 });
 
-$('#period').change(function () {
+$('#period').click(function () {
   alert("in change method");
   if (this.checked) {
-    alert("24 hour period");
-  } else {
     alert("week period");
+  } else {
+    alert("24 hour period");
   }
 });
