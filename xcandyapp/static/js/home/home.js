@@ -186,8 +186,20 @@ var bubbleChart = new Chart(popCanvas_vis, {
 $('#period').click(function () {
   alert("in change method");
   if (this.checked) {
-    alert("week period");
+    period = 1;
   } else {
-    alert("24 hour period");
+    period = 7;
   }
+  new Ajax.Request('/home/glucose/', {
+    method: 'post',
+    parameters: $H({
+      'period': period
+    }),
+    onSuccess: function (transport) {
+      alert('success');
+      // var e = $('id_color')
+      // if (transport.responseText)
+      //   e.update(transport.responseText)
+    }
+  });
 });
