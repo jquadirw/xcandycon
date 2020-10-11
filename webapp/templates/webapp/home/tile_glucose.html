@@ -13,14 +13,12 @@
         </div>
 
         <!-- Rounded switch -->
-        {% if refresh is None or refresh == False %}
         <label class="switch">
-            <input type="checkbox" id="period" name="period">
+            <input type="checkbox" id="period" name="period" {% if refresh %}checked{% endif %}>
             <span class="slider round"></span>
             <div class="slider-top">24hr</div>
             <div class="slider-btm">Week</div>
         </label>
-        {% endif %}
         <!-- Rounded switch end -->
     </div>
 </div>
