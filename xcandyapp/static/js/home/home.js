@@ -196,7 +196,7 @@ $('#period').click(function () {
     },
     success: function (data) {
       $('#avg_glucose').html(data);
-      $('#avg_glucose').outerHTML = $('#avg_glucose').innerHTML;
+      $("#avg_glucose").replaceWith($("#avg_glucose").html());
     }
   });
 });
