@@ -246,7 +246,7 @@ def refresh_glucose(request):
     period = int(request.GET["period"])
     profile = request.user.profile
     refreshed = glucose(profile, period)
-    context = {'glucose': refreshed}
+    context = {'glucose': refreshed, 'refresh': True}
     return render(request, 'webapp/home/tile_glucose.html', context)
 
 @login_required
