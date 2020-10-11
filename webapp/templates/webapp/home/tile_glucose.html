@@ -1,17 +1,15 @@
 <div id="avg_glucose" class="c1-item c1-item4-container">
     <div class="c1-item4">
         <h6>Average Glucose</h6>
-        <div id="gvalues" class="dummy">
-            <div class="data-big">
-                <h4>{{ glucose.value|stringformat:"03d" }} <span class="db-unit" class="unit">mg/dl</span></h4>
-            </div>
-            <div class="bar">
-                <div class="home-hp-value"></div>
-                <p class="hp-title"><a
-                        style="color: #5c5c5c; text-decoration: none; background: #ffffff; margin-left: 20px; padding: 0px 4px; border-radius: 2px;"
-                        href="#">{{ glucose.num_events|stringformat:"02d" }}</a> HYPO EVENTS
-                </p>
-            </div>
+        <div class="data-big">
+            <h4>{{ glucose.value|stringformat:"03d" }} <span class="db-unit" class="unit">mg/dl</span></h4>
+        </div>
+        <div class="bar">
+            <div class="home-hp-value"></div>
+            <p class="hp-title"><a
+                    style="color: #5c5c5c; text-decoration: none; background: #ffffff; margin-left: 20px; padding: 0px 4px; border-radius: 2px;"
+                    href="#">{{ glucose.num_events|stringformat:"02d" }}</a> HYPO EVENTS
+            </p>
         </div>
 
         <!-- Rounded switch -->
