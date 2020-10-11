@@ -183,7 +183,7 @@ var bubbleChart = new Chart(popCanvas_vis, {
   }
 });
 
-$('#period').change(function () {
+$('#period').click(function () {
   if (this.checked) {
     period = 7;
   } else {
@@ -195,9 +195,8 @@ $('#period').change(function () {
       'period': period
     },
     success: function (data) {
-      $('#avg_glucose').html(data, function () {
-        $(this).children().unwrap()
-      });
+      $('#avg_glucose').html(data);
+      $('#avg_glucose').outerHTML = $('#avg_glucose').innerHTML;
     }
   });
 });
