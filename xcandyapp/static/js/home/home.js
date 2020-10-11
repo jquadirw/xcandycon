@@ -184,6 +184,7 @@ var bubbleChart = new Chart(popCanvas_vis, {
 });
 
 $('#period').click(function () {
+  alert('clicked...checked = ' + this.checked);
   if (this.checked) {
     period = 7;
   } else {
