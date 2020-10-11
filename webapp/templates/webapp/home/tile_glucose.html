@@ -15,8 +15,7 @@
         </div>
 
         <!-- Rounded switch -->
-        refresh value = {{ refresh }}
-        {% if refresh == False %}
+        {% if refresh is None or refresh == False %}
         <label class="switch">
             <input type="checkbox" id="period" name="period">
             <span class="slider round"></span>
