@@ -246,8 +246,6 @@ def refresh_glucose(request):
     period = int(request.GET["period"])
     profile = request.user.profile
     refreshed = glucose(profile, period)
-    print("########### glucose value = ", refreshed.value)
-    print("######### #events = ", refreshed.num_events)
     context = {'glucose': refreshed}
     return render(request, 'webapp/home/tile_glucose.html', context)
 
