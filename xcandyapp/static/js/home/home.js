@@ -183,26 +183,6 @@ var bubbleChart = new Chart(popCanvas_vis, {
   }
 });
 
-$('#glucoseForm').submit(function (e) {
-  alert('in the form....');
-  if ($('input.test[type="checkbox"]:checked', this).val()) {
-    alert('its a week....');
-    period = 7;
-  } else {
-    alert('its a day....');
-    period = 1;
-  }
-  alert('period....' + period);
-  $.post('/home/glucose/', {
-    'period': period
-  }, $(this).serialize(), function (data) {
-    $('#avg_glucose').html(data);
-    $("#avg_glucose").replaceWith($("#avg_glucose").html());
-  });
-  e.preventDefault();
-});
-
-/*
 $('#period').change(function () {
   alert('change...checked = ' + this.checked);
   if (this.checked) {
@@ -221,4 +201,3 @@ $('#period').change(function () {
     }
   });
 });
-*/
