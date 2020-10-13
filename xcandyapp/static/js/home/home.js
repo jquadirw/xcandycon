@@ -183,21 +183,23 @@ var bubbleChart = new Chart(popCanvas_vis, {
   }
 });
 
-$('#period').change(function () {
-  alert('change...checked = ' + this.checked);
-  if ($(this).is(":checked")) {
-    period = 7;
-  } else {
-    period = 1;
-  }
-  $.ajax({
-    url: '/home/glucose/',
-    data: {
-      'period': period
-    },
-    success: function (data) {
-      $('#avg_glucose').html(data);
-      $("#avg_glucose").replaceWith($("#avg_glucose").html());
+$(function () {
+  $("#period").click(function () {
+    alert('change...checked = ' + this.checked);
+    if ($(this).is(":checked")) {
+      period = 7;
+    } else {
+      period = 1;
     }
+    $.ajax({
+      url: '/home/glucose/',
+      data: {
+        'period': period
+      },
+      success: function (data) {
+        $('#avg_glucose').html(data);
+        $("#avg_glucose").replaceWith($("#avg_glucose").html());
+      }
+    });
   });
 });
