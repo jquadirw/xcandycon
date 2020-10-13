@@ -185,8 +185,7 @@ var bubbleChart = new Chart(popCanvas_vis, {
 
 // $('input[name="period"]').change(function () {
 $(document).on('click', '#avg_glucose_slider', function () {
-  alert('change...checked = ' + $("#period").is(":checked"));
-  if ($("#period").is(":checked")) {
+  if ($("#period").is(":checked") == false) {
     period = 7;
   } else {
     period = 1;
