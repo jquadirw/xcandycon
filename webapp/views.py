@@ -247,6 +247,7 @@ def refresh_glucose(request):
     profile = request.user.profile
     refreshed = glucose(profile, period)
     refresh = True if period == 7 else 1
+    print("###### refresh = ", refresh)
     context = {'glucose': refreshed, 'refresh': refresh}
     return render(request, 'webapp/home/tile_glucose.html', context)
 
